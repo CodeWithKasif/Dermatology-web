@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+          .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 80px;
+            background-color: #fff;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #008080;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar ul li {
+            display: inline;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            font-size: 16px;
+            color: #333;
+            transition: color 0.3s;
+        }
+
+        .navbar ul li a:hover {
+            color: #008080;
+        }
+        .cart {
+            position: relative;
+            cursor: pointer;
+            font-size: 20px;
+            color: #008080;
+        }
+
+        .cart-counter {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            background: red;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 2px 6px;
+            border-radius: 50%;
+        }
+        /* card container */
+        
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            /* background-color: #eaf4f6; */
+        }
+        .card {
+            width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #f8f1eb;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease-in-out;
+        }
+        .card:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            transition: transform 0.3s ease-in-out;
+        }
+        .card:hover img {
+            transform: scale(1.05);
+        }
+        .badge {
+            position: absolute;
+            background: #d3e1c5;
+            color: #475d3b;
+            padding: 5px 10px;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 5px;
+            top: 10px;
+            left: 10px;
+        }
+        .card-content {
+            padding: 15px;
+            background: #fff;
+        }
+        .card-content h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        .card-content p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        .price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+        .button {
+            float: right;
+            padding: 8px 12px;
+            border: 1px solid #000;
+            background: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background: #000;
+            color: #fff;
+        }
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Derma Luxe</div>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#head">Products</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li>
+                <div class="cart" onclick="toggleCart()">
+                    🛒 <span id="cart-counter" class="cart-counter">0</span>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <section>
+        
+        <div class="container">
+           <div class="card">
+               <div style="position: relative;">
+                   <img src="/frontend/img/products/cleanser1.jpeg" alt="Product Image">
+                   <span class="badge">BESTSELLER</span>
+               </div>
+               <div class="card-content">
+                   <h3>Gentle Facial Cleanser</h3>
+                   <p>Deeply cleanses without drying</p>
+                   <div class="card-footer">
+                       <span class="price">$28.00</span>
+                       <button class="button">Add to Cart</button>
+                   </div>
+               </div>
+           </div>
+           <div class="card">
+               <div style="position: relative;">
+                   <img src="/frontend/img/products/cleanser1.jpeg" alt="Product Image">
+                   <!-- <span class="badge">BESTSELLER</span> -->
+               </div>
+               <div class="card-content">
+                   <h3>Gentle Facial Cleanser</h3>
+                   <p>Deeply cleanses without drying</p>
+                   <div class="card-footer">
+                       <span class="price">$28.00</span>
+                       <button class="button">Add to Cart</button>
+                   </div>
+               </div>
+           </div>
+           <div class="card">
+               <div style="position: relative;">
+                   <img src="/frontend/img/products/cleanser1.jpeg" alt="Product Image">
+                   <!-- <span class="badge">BESTSELLER</span> -->
+               </div>
+               <div class="card-content">
+                   <h3 style="color: teal;">Gentle Facial Cleanser</h3>
+                   <p>Deeply cleanses without drying</p>
+                   <div class="card-footer">
+                       <span class="price">$28.00</span>
+                       <button class="button">Add to Cart</button>
+                   </div>
+               </div>
+           </div>
+           <div class="card">
+               <div style="position: relative;">
+                   <img src="/frontend/img/products/cleanser1.jpeg" alt="Product Image">
+                   <span class="badge">BESTSELLER</span>
+               </div>
+               <div class="card-content">
+                   <h3>Gentle Facial Cleanser</h3>
+                   <p>Deeply cleanses without drying</p>
+                   <div class="card-footer">
+                       <span class="price">$28.00</span>
+                       <button class="button">Add to Cart</button>
+                   </div>
+               </div>
+           </div>
+           <div class="card">
+               <div style="position: relative;">
+                   <img src="/frontend/img/products/cleanser1.jpeg" alt="Product Image">
+                   <span class="badge">BESTSELLER</span>
+               </div>
+               <div class="card-content">
+                   <h3>Gentle Facial Cleanser</h3>
+                   <p>Deeply cleanses without drying</p>
+                   <div class="card-footer">
+                       <span class="price">$28.00</span>
+                       <button class="button">Add to Cart</button>
+                   </div>
+               </div>
+           </div>
+           <div class="card">
+               <div style="position: relative;">
+                   <img src="/frontend/img/products/cleanser1.jpeg" alt="Product Image">
+                   <span class="badge">BESTSELLER</span>
+               </div>
+               <div class="card-content">
+                   <h3>Gentle Facial Cleanser</h3>
+                   <p>Deeply cleanses without drying</p>
+                   <div class="card-footer">
+                       <span class="price">$28.00</span>
+                       <button class="button">Add to Cart</button>
+                   </div>
+               </div>
+           </div>
+           <div class="card">
+               <div style="position: relative;">
+                   <img src="/frontend/img/products/cleanser1.jpeg" alt="Product Image">
+                   <span class="badge">BESTSELLER</span>
+               </div>
+               <div class="card-content">
+                   <h3>Gentle Facial Cleanser</h3>
+                   <p>Deeply cleanses without drying</p>
+                   <div class="card-footer">
+                       <span class="price">$28.00</span>
+                       <button class="button">Add to Cart</button>
+                   </div>
+               </div>
+           </div>
+           <div class="card">
+               <div style="position: relative;">
+                   <img src="/frontend/img/products/cleanser1.jpeg" alt="Product Image">
+                   <span class="badge">BESTSELLER</span>
+               </div>
+               <div class="card-content">
+                   <h3>Gentle Facial Cleanser</h3>
+                   <p>Deeply cleanses without drying</p>
+                   <div class="card-footer">
+                       <span class="price">$28.00</span>
+                       <button class="button">Add to Cart</button>
+                   </div>
+               </div>
+           </div>
+           
+       </div>
+   </section>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Skin Diagnosis</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Dermaology</div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Healthcare</a></li>
+            <li><a href="#">Store</a></li>
+            <li><a href="#">Virtual Consultation</a></li>
+        </ul>
+        <div class="cart-login">
+            <button class="cart">Cart</button>
+            <button class="logout" onclick="logout()">Logout</button>
+        </div>
+    </nav>
+    
+    <header class="hero">
+        <div class="hero-content">
+            <h1>AI Skin Diagnosis</h1>
+            <h2>AI-based Skin Assistant</h2>
+            <p>Your comprehensive solution for skin care needs. Let our AI analyze and provide detailed insights about your skin condition, making healthcare decisions easier.</p>
+            <button class="get-started">GET STARTED</button>
+        </div>
+        <div class="hero-image">
+            <img src="./img/new.webp" alt="AI Skin Diagnosis Illustration">
+        </div>
+    </header>
+
+    <!-- Features Section with Images -->
+    <section class="features">
+        <div class="feature-card" onclick="skinhaven()">
+            <img src="./img/sd.jpeg" alt="Skin Diagnosis">
+            <h3>Skin Diagnosis</h3>
+            <p>Advanced mobile application for instant skin analysis and recommendations.</p>
+            <button class="feature-btn">Learn More</button>
+        </div>
+        <div class="feature-card">
+            <img src="./img/vc.jpeg" alt="Virtual Consultation">
+            <h3>Virtual Consultation</h3>
+            <p>Connect with dermatologists remotely for professional advice and treatment plans.</p>
+            <button class="feature-btn">Book Now</button>
+        </div>
+        <div class="feature-card" onclick="skincare()">
+            <img src="./img/sk.jpeg" alt="Skincare Store">
+            <h3>Skincare Store</h3>
+            <p>Shop our curated collection of dermatologist-recommended skincare products.</p>
+            <button class="feature-btn">Shop Now</button>
+        </div>
+        <div class="feature-card">
+            <img src="./img/ab.jpeg" alt="AI Chatbot">
+            <h3>AI Chatbot</h3>
+            <p>Instant answers to your skincare questions with our AI-powered chatbot assistant.</p>
+            <button class="feature-btn">Chat Now</button>
+        </div>
+    </section>
+
+    <script>
+        function logout() {
+            window.location.href = "signup.html";
+        }
+        function skincare(){
+            window.location.href="cart.html";
+        }
+        function skinhaven(){
+            window.location.href="skinHaven.html"
+        }
+    </script>
+</body>
+</html>

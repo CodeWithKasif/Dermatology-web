@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Navbar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #f8fbff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #12233d;
+        }
+        .nav-links {
+            display: flex;
+            gap: 60px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #12233d;
+            font-size: 16px;
+        }
+        .nav-links a:hover {
+            color: #3b82f6;
+        }
+        .book-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .book-section a {
+            text-decoration: none;
+            color: #3b82f6;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .book-btn {
+            background-color: teal;
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+        .book-btn:hover {
+            background-color: teal;
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: #f8fbff;
+                padding: 10px 0;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            }
+            .nav-links.show {
+                display: flex;
+            }
+            .menu-toggle {
+                display: block;
+            }
+        }
+        /* hero section */
+        .hero-section {
+    max-width: 800px;
+    padding: 40px;
+    
+}
+.content{
+    position: relative;
+    left: 80px;
+    top:50px ;
+}
+.badge {
+    display: inline-block;
+    background: #bfdbfe;
+    color: #2563eb;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+h1 {
+    font-size: 70px;
+    font-weight: bold;
+    color: #1e3a8a;
+    margin-top: 46px;
+}
+
+
+
+p {
+    color: #4b5563;
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.buttons {
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    border: none;
+    font-weight: 600;
+}
+
+.primary {
+    background: #2563eb;
+    color: white;
+}
+
+.primary:hover {
+    background: #1e40af;
+}
+
+.secondary {
+    background: white;
+    color: #2563eb;
+    border: 2px solid #2563eb;
+}
+
+.secondary:hover {
+    background: #bfdbfe;
+}
+.secondary:hover {
+    background: #bfdbfe;
+}
+
+/* card section */
+.services-section {
+    padding: 50px 20px;
+    position: relative;
+    top: 80px;
+    background-color: aliceblue;
+}
+
+.services-section h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.services-section p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    color: #64748b;
+}
+
+/* Services Container */
+.services-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 160px;
+}
+
+/* Service Card */
+.service-card {
+    background: white;
+    padding: 25px;
+    height: 350px;
+    width: 350px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    margin-top: 50px;
+}
+
+.service-card h3 {
+    font-size: 1.3rem;
+    margin: 10px 0;
+}
+
+.service-card p {
+    font-size: 1rem;
+    color: #475569;
+}
+
+.service-card ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+.service-card li {
+    font-size: 0.95rem;
+    color: #334155;
+    padding-left: 10px;
+    margin: 5px 0;
+}
+
+/* Icon */
+.icon {
+    font-size: 2rem;
+    color: #3b82f6;
+}
+    </style>
+   
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">DermaTouch</div>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        <div class="nav-links">
+            <a href="#">Services</a>
+            <a href="#">Treatments</a>
+            <a href="#">About</a>
+            <a href="#">Testimonials</a>
+            <a href="#">Contact</a>
+        </div>
+        <div class="book-section">
+            <a href="#">📞 Book Consultation</a>
+            <button class="book-btn">Book Now</button>
+        </div>
+    </nav>
+    <section>
+        <div class="hero-section">
+            <div class="content">
+                <span class="badge">Premium Dermatology Consultations</span>
+                <h1>Rejuvenate Your Skin With Expert Care</h1>
+                <p>Experience transformative skincare with our advanced treatments and personalized consultations tailored to your unique skin profile.</p>
+                <div class="buttons">
+                    <button class="btn primary">Book Consultation</button>
+                    <button class="btn secondary">Our Services →</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="services-section">
+        <h2 style="text-align: center;">Our Premium Services</h2>
+        <p style="text-align: center;">Experience exceptional care with our comprehensive dermatology services designed to address all your skin concerns.</p>
+        
+        <div class="services-container">
+            <!-- Card 1 -->
+            <div class="service-card">
+                <div class="icon">🏅</div>
+                <h3>Expert Consultations</h3>
+                <p>Personalized skin analysis and treatment plans from board-certified dermatologists with years of experience.</p>
+                <ul>
+                    <li>✔ Comprehensive skin evaluation</li>
+                    <li>✔ Digital skin analysis</li>
+                    <li>✔ Custom treatment recommendations</li>
+                </ul>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="service-card">
+                <div class="icon">📋</div>
+                <h3>Advanced Treatments</h3>
+                <p>Cutting-edge procedures using the latest technology and research-backed methodologies.</p>
+                <ul>
+                    <li>✔ Medical-grade treatments</li>
+                    <li>✔ Non-invasive options</li>
+                    <li>✔ Results-focused approaches</li>
+                </ul>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="service-card">
+                <div class="icon">💙</div>
+                <h3>Holistic Skincare</h3>
+                <p>A comprehensive approach that addresses both symptoms and underlying causes of skin conditions.</p>
+                <ul>
+                    <li>✔ Lifestyle recommendations</li>
+                    <li>✔ Nutritional guidance</li>
+                    <li>✔ Long-term skin health plans</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    
+</body>
+<script>
+    function toggleMenu() {
+        document.querySelector('.nav-links').classList.toggle('show');
+    }
+</script>
+</html>
