@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/frontend/cart/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Derma Luxe</div>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#head">Products</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li>
+                <div class="cart" onclick="cartAPI.toggleCart()">
+                    🛒 <span id="cart-counter" class="cart-counter">0</span>
+                  </div>
+            </li>
+        </ul>
+    </nav>
+    <!-- sidebar imp sect -->
+         <!-- Cart Sidebar -->
+<div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h2>Your Cart</h2>
+      <button class="close-btn" onclick="cartAPI.toggleCart()">×</button>
+    </div>
+    <div id="cartItems"></div>
+    <div class="cart-total">
+      <p>Total: $<span id="cartTotal">0.00</span></p>
+      <button class="checkout-btn">Place Order</button>
+    </div>
+  </div>
+  
+  <!-- Overlay -->
+  <div class="overlay" id="overlay" onclick="cartAPI.toggleCart()"></div>
+     
+    <section>
+        <div class="container" id="product-container"></div>
+       
+   </section>
+</body>
+<script src="/frontend/js/cart.js"></script>
+<script>
+     const products = [
+  { id: 1, name: "Hydrating Hyaluronic Acid ", price: 28.00, img: "/frontend/cart/images/cleans/c1.webp" },
+  { id: 2, name: "Charcoal Detox Cleanser", price: 28.00, img: "/frontend/cart/images/cleans/c2.webp" },
+  { id: 3, name: "Aloe Vera Soothing Cleanser", price: 28.00, img: "/frontend/cart/images/cleans/c3.webp" },
+  { id: 4, name: "Tea Tree Purifying Cleanser", price: 28.00, img: "/frontend/cart/images/cleans/c4.webp" },
+  { id: 5, name: "Vitamin C Brightening Cleanser", price: 28.00, img: "/frontend/cart/images/cleans/c5.webp" },
+  { id: 6, name: "Salicylic Acid Acne Cleanser", price: 28.00, img: "/frontend/cart/images/cleans/c6.jpg" },
+  { id: 7, name: "Green Tea Antioxidant Cleanser", price: 28.00, img: "/frontend/cart/images/cleans/c7.jpg" },
+  { id: 8, name: "Gentle Foaming Cleanser", price: 28.00, img: "/frontend/cart/images/cleans/c8.jpg" },
+  { id: 9, name: "Exfoliating Glycolic Acid Cleanser", price: 28.00, img: "/frontend/cart/images/cleans/c9.jpg" },
+  { id: 10, name: "Moisturizing Ceramide Cleanser", price: 28.00, img: "/frontend/cart/images/cleans/c10.jpg" },
+  { id: 11, name: "Rosewater Calming Cleanser", price: 28.00, img: "/frontend/cart/images/cleans/c11.jpg" },
+  { id: 12, name: "Coconut Oil Nourishing Cleanser", price: 28.00, img: "/frontend/cart/images/cleans/c12.jpg" },
+  { id: 13, name: "Cucumber Refreshing Cleanser", price: 28.00, img: "/frontend/cart/images/cleans/c13.jpg" },
+  { id: 14, name: "Oatmeal Soothing Cleanser", price: 28.00, img: "/frontend/cart/images/cleans/c14.jpg" },
+  { id: 15, name: "Niacinamide Pore Minimizing Cleanser", price: 28.00, img: "/frontend/cart/images/cleans/c15.jpg" },
+  { id: 16, name: "Probiotic Balance Cleanser", price: 28.00, img: "/frontend/cart/images/cleans/c16.jpg" },
+  { id: 17, name: "Honey Moisturizing Cleanser", price: 28.00, img: "/frontend/cart/images/cleans/c17.jpg" },
+  { id: 18, name: "Clay Clarifying Cleanser", price: 28.00, img: "/frontend/cart/images/cleans/c18.jpg" },
+  { id: 19, name: "Retinol Renewal Cleanser", price: 28.00, img: "/frontend/cart/images/cleans/c19.jpg" },
+  { id: 20, name: "Chamomile Sensitive Skin Cleanser", price: 28.00, img: "/frontend/cart/images/cleans/c20.jpg" },
+  { id: 21, name: "Peptide Firming Cleanser", price: 28.00, img: "/frontend/cart/images/cleans/c21.jpg" },
+  { id: 22, name: "Jojoba Oil Hydrating Cleanser", price: 28.00, img: "/frontend/cart/images/cleans/c22.jpg" },
+  { id: 23, name: "Turmeric Anti-Inflammatory Cleanser", price: 28.00, img: "/frontend/cart/images/cleans/c23.jpg" },
+  { id: 24, name: "Shea Butter Moisturizing Cleanser", price: 28.00, img: "/frontend/cart/images/cleans/c24.jpg" },
+  { id: 25, name: "Lemon Zest Energizing Cleanser", price: 28.00, img: "/frontend/cart/images/cleans/c25.jpg" },
+  { id: 26, name: "Mint Cooling Cleanser", price: 28.00, img: "/frontend/cart/images/cleans/c26.jpg" },
+  { id: 27, name: "Pumpkin Enzyme Exfoliating Cleanser", price: 28.00, img: "/frontend/cart/images/cleans/c27.jpg" },
+  { id: 28, name: "Bamboo Charcoal Deep Cleansing Cleanser", price: 28.00, img: "/frontend/cart/images/cleans/c28.jpg" },
+  { id: 29, name: "Seaweed Detoxifying Cleanser", price: 28.00, img: "/frontend/cart/images/cleans/c29.jpg" },
+  { id: 30, name: "Lavender Relaxing Cleanser", price: 28.00, img: "/frontend/cart/images/cleans/c30.jpg" }
+];
+
+        const container = document.getElementById("product-container");
+
+        products.forEach(product => {
+    const card = document.createElement("div");
+    card.classList.add("card");
+    card.dataset.productId = product.id; // Add data attribute
+
+    card.innerHTML = `
+        <div style="position: relative;">
+            <img src="${product.img}" alt="Product Image" width="150">
+            
+        </div>
+        <div class="card-content">
+            <h3>${product.name}</h3>
+            <p>Deeply cleanses without drying</p>
+            <div class="card-footer">
+                <span class="price">$${product.price.toFixed(2)}</span>
+                <button class="button add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+    `;
+
+    container.appendChild(card);
+});
+</script>
+</html>

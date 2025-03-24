@@ -4,143 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-          .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 80px;
-            background-color: #fff;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .navbar .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #008080;
-        }
-
-        .navbar ul {
-            list-style: none;
-            display: flex;
-            gap: 30px;
-            margin: 0;
-            padding: 0;
-        }
-
-        .navbar ul li {
-            display: inline;
-        }
-
-        .navbar ul li a {
-            text-decoration: none;
-            font-size: 16px;
-            color: #333;
-            transition: color 0.3s;
-        }
-
-        .navbar ul li a:hover {
-            color: #008080;
-        }
-        .cart {
-            position: relative;
-            cursor: pointer;
-            font-size: 20px;
-            color: #008080;
-        }
-
-        .cart-counter {
-            position: absolute;
-            top: -8px;
-            right: -10px;
-            background: red;
-            color: white;
-            font-size: 12px;
-            font-weight: bold;
-            padding: 2px 6px;
-            border-radius: 50%;
-        }
-        /* card container */
-        
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            padding: 20px;
-            /* background-color: #eaf4f6; */
-        }
-        .card {
-            width: 300px;
-            border-radius: 10px;
-            overflow: hidden;
-            background: #f8f1eb;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: box-shadow 0.3s ease-in-out;
-        }
-        .card:hover {
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
-        .card img {
-            width: 100%;
-            height: 200px;
-            object-fit: contain;
-            transition: transform 0.3s ease-in-out;
-        }
-        .card:hover img {
-            transform: scale(1.05);
-        }
-        .badge {
-            position: absolute;
-            background: #d3e1c5;
-            color: #475d3b;
-            padding: 5px 10px;
-            font-size: 12px;
-            font-weight: bold;
-            border-radius: 5px;
-            top: 10px;
-            left: 10px;
-        }
-        .card-content {
-            padding: 15px;
-            background: #fff;
-        }
-        .card-content h3 {
-            font-size: 18px;
-            margin-bottom: 5px;
-        }
-        .card-content p {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 10px;
-        }
-        .price {
-            font-size: 18px;
-            font-weight: bold;
-            color: #333;
-        }
-        .button {
-            float: right;
-            padding: 8px 12px;
-            border: 1px solid #000;
-            background: #fff;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .button:hover {
-            background: #000;
-            color: #fff;
-        }
-        .card-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="/frontend/cart/style.css">
 </head>
 <body>
     <nav class="navbar">
@@ -151,129 +15,92 @@
             <li><a href="#">About</a></li>
             <li><a href="#">Contact</a></li>
             <li>
-                <div class="cart" onclick="toggleCart()">
+                <div class="cart" onclick="cartAPI.toggleCart()">
                     🛒 <span id="cart-counter" class="cart-counter">0</span>
-                </div>
+                  </div>
             </li>
         </ul>
     </nav>
+    <!-- sidebar imp sect -->
+         <!-- Cart Sidebar -->
+<div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h2>Your Cart</h2>
+      <button class="close-btn" onclick="cartAPI.toggleCart()">×</button>
+    </div>
+    <div id="cartItems"></div>
+    <div class="cart-total">
+      <p>Total: $<span id="cartTotal">0.00</span></p>
+      <button class="checkout-btn">Place Order</button>
+    </div>
+  </div>
+  
+  <!-- Overlay -->
+  <div class="overlay" id="overlay" onclick="cartAPI.toggleCart()"></div>
+     
     <section>
-        
-        <div class="container">
-           <div class="card">
-               <div style="position: relative;">
-                   <img src="/frontend/img/products/cleanser1.jpeg" alt="Product Image">
-                   <span class="badge">BESTSELLER</span>
-               </div>
-               <div class="card-content">
-                   <h3>Gentle Facial Cleanser</h3>
-                   <p>Deeply cleanses without drying</p>
-                   <div class="card-footer">
-                       <span class="price">$28.00</span>
-                       <button class="button">Add to Cart</button>
-                   </div>
-               </div>
-           </div>
-           <div class="card">
-               <div style="position: relative;">
-                   <img src="/frontend/img/products/cleanser1.jpeg" alt="Product Image">
-                   <!-- <span class="badge">BESTSELLER</span> -->
-               </div>
-               <div class="card-content">
-                   <h3>Gentle Facial Cleanser</h3>
-                   <p>Deeply cleanses without drying</p>
-                   <div class="card-footer">
-                       <span class="price">$28.00</span>
-                       <button class="button">Add to Cart</button>
-                   </div>
-               </div>
-           </div>
-           <div class="card">
-               <div style="position: relative;">
-                   <img src="/frontend/img/products/cleanser1.jpeg" alt="Product Image">
-                   <!-- <span class="badge">BESTSELLER</span> -->
-               </div>
-               <div class="card-content">
-                   <h3 style="color: teal;">Gentle Facial Cleanser</h3>
-                   <p>Deeply cleanses without drying</p>
-                   <div class="card-footer">
-                       <span class="price">$28.00</span>
-                       <button class="button">Add to Cart</button>
-                   </div>
-               </div>
-           </div>
-           <div class="card">
-               <div style="position: relative;">
-                   <img src="/frontend/img/products/cleanser1.jpeg" alt="Product Image">
-                   <span class="badge">BESTSELLER</span>
-               </div>
-               <div class="card-content">
-                   <h3>Gentle Facial Cleanser</h3>
-                   <p>Deeply cleanses without drying</p>
-                   <div class="card-footer">
-                       <span class="price">$28.00</span>
-                       <button class="button">Add to Cart</button>
-                   </div>
-               </div>
-           </div>
-           <div class="card">
-               <div style="position: relative;">
-                   <img src="/frontend/img/products/cleanser1.jpeg" alt="Product Image">
-                   <span class="badge">BESTSELLER</span>
-               </div>
-               <div class="card-content">
-                   <h3>Gentle Facial Cleanser</h3>
-                   <p>Deeply cleanses without drying</p>
-                   <div class="card-footer">
-                       <span class="price">$28.00</span>
-                       <button class="button">Add to Cart</button>
-                   </div>
-               </div>
-           </div>
-           <div class="card">
-               <div style="position: relative;">
-                   <img src="/frontend/img/products/cleanser1.jpeg" alt="Product Image">
-                   <span class="badge">BESTSELLER</span>
-               </div>
-               <div class="card-content">
-                   <h3>Gentle Facial Cleanser</h3>
-                   <p>Deeply cleanses without drying</p>
-                   <div class="card-footer">
-                       <span class="price">$28.00</span>
-                       <button class="button">Add to Cart</button>
-                   </div>
-               </div>
-           </div>
-           <div class="card">
-               <div style="position: relative;">
-                   <img src="/frontend/img/products/cleanser1.jpeg" alt="Product Image">
-                   <span class="badge">BESTSELLER</span>
-               </div>
-               <div class="card-content">
-                   <h3>Gentle Facial Cleanser</h3>
-                   <p>Deeply cleanses without drying</p>
-                   <div class="card-footer">
-                       <span class="price">$28.00</span>
-                       <button class="button">Add to Cart</button>
-                   </div>
-               </div>
-           </div>
-           <div class="card">
-               <div style="position: relative;">
-                   <img src="/frontend/img/products/cleanser1.jpeg" alt="Product Image">
-                   <span class="badge">BESTSELLER</span>
-               </div>
-               <div class="card-content">
-                   <h3>Gentle Facial Cleanser</h3>
-                   <p>Deeply cleanses without drying</p>
-                   <div class="card-footer">
-                       <span class="price">$28.00</span>
-                       <button class="button">Add to Cart</button>
-                   </div>
-               </div>
-           </div>
-           
-       </div>
+        <div class="container" id="product-container"></div>
+       
    </section>
 </body>
+<script src="/frontend/js/cart.js"></script>
+<script>
+     const products = [
+    { id: 1, name: "Hydro Boost Water Gel", price: 28.00, img: "/frontend/cart/images/moist/m1.jpg" },
+    { id: 2, name: "Intensive Repair Cream", price: 32.00, img: "/frontend/cart/images/moist/m2.webp" },
+    { id: 3, name: "24h Moisture Therapy", price: 35.00, img: "/frontend/cart/images/moist/m3.avif" },
+    { id: 4, name: "Ceramide Barrier Cream", price: 40.00, img: "/frontend/cart/images/moist/m4.jpeg" },
+    { id: 5, name: "Aloe Vera Soothing Gel", price: 25.00, img: "/frontend/cart/images/moist/m5.jpg" },
+    { id: 6, name: "Vitamin E Enriched Lotion", price: 45.00, img: "/frontend/cart/images/moist/m6.webp" },
+    { id: 7, name: "Collagen Renewal Cream", price: 22.00, img: "/frontend/cart/images/moist/m7.webp" },
+    { id: 8, name: "SPF 30 Daily m", price: 30.00, img: "/frontend/cart/images/moist/m8.webp" },
+    { id: 9, name: "Overnight Recovery Balm", price: 38.00, img: "/frontend/cart/images/moist/m9.avif" },
+    { id: 10, name: "Matte Finish Fluid", price: 27.00, img: "/frontend/cart/images/moist/m10.jpg" },
+    { id: 11, name: "Rosehip Nourishing Cream", price: 33.00, img: "/frontend/cart/images/moist/m11.jpeg" },
+    { id: 12, name: "Hyaluronic Acid Serum Cream", price: 42.00, img: "/frontend/cart/images/moist/m12.jpeg" },
+    { id: 13, name: "Green Tea Balancing Lotion", price: 29.00, img: "/frontend/cart/images/moist/m13.jpeg" },
+    { id: 14, name: "Shea Butter Rich Cream", price: 24.00, img: "/frontend/cart/images/moist/m14.jpeg" },
+    { id: 15, name: "Peptide Complex m", price: 55.00, img: "/frontend/cart/images/moist/m15.jpeg" },
+    { id: 16, name: "Oil-Free Hydration Gel", price: 26.00, img: "/frontend/cart/images/moist/m16.jpeg" },
+    { id: 17, name: "Brightening Vitamin C Cream", price: 48.00, img: "/frontend/cart/images/moist/m17.jpeg" },
+    { id: 18, name: "Sensitive Skin Formula", price: 31.00, img: "/frontend/cart/images/moist/m18.jpeg" },
+    { id: 19, name: "Anti-Aging Night Cream", price: 60.00, img: "/frontend/cart/images/moist/m19.jpeg" },
+    { id: 20, name: "Tea Tree Oil Control Lotion", price: 28.00, img: "/frontend/cart/images/moist/m20.jpeg" },
+    { id: 21, name: "Coconut Water Infusion", price: 34.00, img: "/frontend/cart/images/moist/m21.jpeg" },
+    { id: 22, name: "Probiotic Balance Cream", price: 37.00, img: "/frontend/cart/images/moist/m22.jpeg" },
+    { id: 23, name: "Argan Oil Nourisher", price: 43.00, img: "/frontend/cart/images/moist/m23.jpeg" },
+    { id: 24, name: "Redness Relief m", price: 39.00, img: "/frontend/cart/images/moist/m24.jpeg" },
+    { id: 25, name: "Pore Minimizing Cream", price: 36.00, img: "/frontend/cart/images/moist/m25.jpeg" },
+    { id: 26, name: "CBD Soothing Balm", price: 52.00, img: "/frontend/cart/images/moist/m26.jpeg" },
+    { id: 27, name: "Gold Radiance Elixir", price: 75.00, img: "/frontend/cart/images/moist/m27.jpeg" },
+    { id: 28, name: "Charcoal Detox Cream", price: 29.00, img: "/frontend/cart/images/moist/m28.jpeg" },
+    { id: 29, name: "Snow Mushroom Hydrator", price: 47.00, img: "/frontend/cart/images/moist/m29.jpeg" },
+    { id: 30, name: "Triple Lipid Restore", price: 65.00, img: "/frontend/cart/images/moist/m30.jpeg" }
+];
+
+        const container = document.getElementById("product-container");
+
+        products.forEach(product => {
+    const card = document.createElement("div");
+    card.classList.add("card");
+    card.dataset.productId = product.id; // Add data attribute
+
+    card.innerHTML = `
+        <div style="position: relative;">
+            <img src="${product.img}" alt="Product Image" width="150">
+            
+        </div>
+        <div class="card-content">
+            <h3>${product.name}</h3>
+            <p>Deeply cleanses without drying</p>
+            <div class="card-footer">
+                <span class="price">$${product.price.toFixed(2)}</span>
+                <button class="button add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+    `;
+
+    container.appendChild(card);
+});
+</script>
 </html>

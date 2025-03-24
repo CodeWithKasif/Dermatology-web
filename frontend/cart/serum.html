@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/frontend/cart/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Derma Luxe</div>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#head">Products</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li>
+                <div class="cart" onclick="cartAPI.toggleCart()">
+                    🛒 <span id="cart-counter" class="cart-counter">0</span>
+                  </div>
+            </li>
+        </ul>
+    </nav>
+    <!-- sidebar imp sect -->
+         <!-- Cart Sidebar -->
+<div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h2>Your Cart</h2>
+      <button class="close-btn" onclick="cartAPI.toggleCart()">×</button>
+    </div>
+    <div id="cartItems"></div>
+    <div class="cart-total">
+      <p>Total: $<span id="cartTotal">0.00</span></p>
+      <button class="checkout-btn">Place Order</button>
+    </div>
+  </div>
+  
+  <!-- Overlay -->
+  <div class="overlay" id="overlay" onclick="cartAPI.toggleCart()"></div>
+     
+    <section>
+        <div class="container" id="product-container"></div>
+       
+   </section>
+</body>
+<script src="/frontend/js/cart.js"></script>
+<script>
+     const products = [
+  ];
+
+        const container = document.getElementById("product-container");
+
+        products.forEach(product => {
+    const card = document.createElement("div");
+    card.classList.add("card");
+    card.dataset.productId = product.id; // Add data attribute
+
+    card.innerHTML = `
+        <div style="position: relative;">
+            <img src="${product.img}" alt="Product Image" width="150">
+            
+        </div>
+        <div class="card-content">
+            <h3>${product.name}</h3>
+            <p>Deeply cleanses without drying</p>
+            <div class="card-footer">
+                <span class="price">$${product.price.toFixed(2)}</span>
+                <button class="button add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+    `;
+
+    container.appendChild(card);
+});
+</script>
+</html>
