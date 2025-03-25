@@ -13,7 +13,7 @@
             <li><a href="#">Home</a></li>
             <li><a href="#">Healthcare</a></li>
             <li><a href="#">Store</a></li>
-            <li><a href="#">Virtual Consultation</a></li>
+            <li><a href="ai.html">Virtual Consultation</a></li>
         </ul>
         <div class="cart-login">
             <button class="cart">Cart</button>
@@ -55,8 +55,8 @@
         </div>
         <div class="feature-card" >
             <img src="./img/ab.jpeg" alt="AI Chatbot">
-            <h3>AI Chatbot</h3>
-            <p>Instant answers to your skincare questions with our AI-powered chatbot assistant.</p>
+            <h3>Skin</h3>
+            <p>Start knowing about skin.</p>
             <button class="feature-btn">Chat Now</button>
         </div>
     </section>
@@ -167,5 +167,19 @@
             window.location.href="DermaTouch.html"
         }
     </script>
+
+<script>
+  window.watsonAssistantChatOptions = {
+    integrationID: "d30e1666-3e46-4025-bc09-644a6736e295", // The ID of this integration.
+    region: "au-syd", // The region your integration is hosted in.
+    serviceInstanceID: "8e076679-4b9c-41a1-a30e-9487c33e96bd", // The ID of your service instance.
+    onLoad: async (instance) => { await instance.render(); }
+  };
+  setTimeout(function(){
+    const t=document.createElement('script');
+    t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+    document.head.appendChild(t);
+  });
+</script>
 </body>
 </html>
