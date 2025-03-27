@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Checkout</title>
+    <style>
+        /* Updated CSS with animations and enhanced UI */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    
+        .checkout-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            animation: fadeIn 0.6s ease-out;
+        }
+    
+        .form-section {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            transition: transform 0.3s ease;
+        }
+    
+        .form-section:hover {
+            transform: translateY(-2px);
+        }
+    
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+    
+        input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    
+        input:focus {
+            outline: none;
+            border-color: #008080;
+            box-shadow: 0 0 0 4px rgba(0, 128, 128, 0.1);
+        }
+    
+        .method-selector {
+            display: flex;
+            gap: 15px;
+            margin: 25px 0;
+            flex-wrap: wrap;
+        }
+    
+        .method-btn {
+            padding: 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            cursor: pointer;
+            flex: 1;
+            min-width: 180px;
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: #f8f8f8;
+        }
+    
+        .method-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+    
+        .method-btn.selected {
+            border-color: #008080;
+            background: #008080;
+            color: white;
+            box-shadow: 0 4px 6px rgba(0, 128, 128, 0.2);
+        }
+    
+        .method-btn[data-method="cod"] {
+            background: #fff3e0;
+            border-color: #ffa726;
+        }
+    
+        .method-btn[data-method="cod"].selected {
+            background: #ffa726;
+            color: #5a3e00;
+            border-color: #ffa726;
+        }
+    
+        .cod-notice {
+            padding: 15px;
+            background: #fff3e0;
+            border-radius: 8px;
+            margin: 15px 0;
+            color: #5a3e00;
+            animation: slideIn 0.4s ease-out;
+        }
+    
+        .order-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            margin-bottom: 15px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+    
+        .order-item:hover {
+            transform: translateY(-2px);
+        }
+    
+        .order-item-img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+    
+        .order-item-img:hover {
+            transform: scale(1.05);
+        }
+    
+        button[type="submit"] {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #008080, #006666);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    
+        button[type="submit"]:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 128, 128, 0.3);
+        }
+    
+        button[type="submit"]:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 5px rgba(0, 128, 128, 0.3);
+        }
+    
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    
+        .payment-option {
+            animation: slideIn 0.4s ease-out;
+        }
+    
+        .total-amount {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 25px 0;
+            padding: 15px;
+            background: #f8f8f8;
+            border-radius: 10px;
+            animation: fadeIn 0.6s ease-out;
+        }
+    
+        @media (max-width: 768px) {
+            .method-btn {
+                flex: 100%;
+            }
+            
+            .checkout-container {
+                padding: 10px;
+                margin: 20px auto;
+            }
+            
+            .form-section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="checkout-container">
+        <h1>Checkout</h1>
+        
+        <div class="form-section">
+            <form id="checkoutForm">
+                <h2>Shipping Details</h2>
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Full Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="address" placeholder="Shipping Address" required>
+                </div>
+
+                <h2>Payment Method</h2>
+                <div class="method-selector">
+                    <div class="method-btn" data-method="credit" onclick="selectPayment('credit')">
+                        💳 Credit Card
+                    </div>
+                    <div class="method-btn" data-method="upi" onclick="selectPayment('upi')">
+                        🇮🇳 UPI
+                    </div>
+                    <div class="method-btn" data-method="cod" onclick="selectPayment('cod')">
+                        📦 Cash on Delivery
+                    </div>
+                </div>
+
+                <div id="credit" class="payment-option">
+                    <div class="form-group">
+                        <input type="text" name="card_number" pattern="\d{16}" 
+                               placeholder="Card Number" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="month" name="expiry" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="cvv" pattern="\d{3}" 
+                               placeholder="CVV" required>
+                    </div>
+                </div>
+
+                <div id="upi" class="payment-option" style="display:none;">
+                    <div class="form-group">
+                        <input type="text" name="upi_id" pattern=".+@.+" 
+                               placeholder="UPI ID" required>
+                    </div>
+                </div>
+
+                <div id="cod" class="payment-option" style="display:none;">
+                    <div class="cod-notice">
+                        Pay ₹<span id="codTotal">0</span> cash on delivery
+                        (Includes ₹50 COD charges)
+                    </div>
+                </div>
+
+                <div class="order-summary">
+                    <h3>Order Summary</h3>
+                    <div id="orderItems"></div>
+                    <p class="total-amount">
+                        Total: ₹<span id="orderTotal">0.00</span>
+                        <span id="codExtra" style="display:none;">(+ ₹50 COD charges)</span>
+                    </p>
+                </div>
+
+                <button type="submit">Place Order</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        let selectedMethod = 'credit';
+        const codCharge = 50;
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function selectPayment(method) {
+            selectedMethod = method;
+            document.querySelectorAll('.method-btn').forEach(btn => 
+                btn.classList.remove('selected'));
+            document.querySelectorAll('.payment-option').forEach(option => 
+                option.style.display = 'none');
+            
+            document.querySelector(`[data-method="${method}"]`).classList.add('selected');
+            document.getElementById(method).style.display = 'block';
+            
+            updateTotals();
+        }
+
+        function updateTotals() {
+            let total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const codExtra = document.getElementById('codExtra');
+            
+            if(selectedMethod === 'cod') {
+                total += codCharge;
+                codExtra.style.display = 'inline';
+                document.getElementById('codTotal').textContent = total.toFixed(2);
+            } else {
+                codExtra.style.display = 'none';
+            }
+            
+            document.getElementById('orderTotal').textContent = total.toFixed(2);
+        }
+
+        // Render order items
+        document.getElementById('orderItems').innerHTML = cart.map(item => `
+            <div class="order-item">
+                <img src="${item.image}" class="order-item-img" alt="${item.name}">
+                <div>
+                    <h4>${item.name}</h4>
+                    <p>${item.quantity} × ₹${item.price.toFixed(2)}</p>
+                </div>
+            </div>
+        `).join('');
+
+        updateTotals();
+
+        // Handle form submission
+        document.getElementById('checkoutForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = {
+                customer: {
+                    name: e.target.name.value,
+                    email: e.target.email.value,
+                    address: e.target.address.value
+                },
+                payment: {
+                    method: selectedMethod,
+                    details: {}
+                },
+                items: cart,
+                total: parseFloat(document.getElementById('orderTotal').textContent)
+            };
+
+            // Collect payment details
+            if(selectedMethod === 'credit') {
+                formData.payment.details = {
+                    card_number: e.target.card_number.value,
+                    expiry: e.target.expiry.value,
+                    cvv: e.target.cvv.value
+                };
+            } else if(selectedMethod === 'upi') {
+                formData.payment.details = {
+                    upi_id: e.target.upi_id.value
+                };
+            }
+
+            try {
+                const response = await fetch('http://localhost:3002/orders', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+
+                if(response.ok) {
+    const data = await response.json();
+    localStorage.removeItem('cart');
+    window.location.href = data.redirect;
+}
+else {
+                    alert('Order failed: ' + (await response.text()));
+                }
+            } catch(error) {
+                console.error('Error:', error);
+                alert('Order failed. Please try again.');
+            }
+        });
+    </script>
+</body>
+</html>

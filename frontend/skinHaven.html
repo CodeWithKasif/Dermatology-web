@@ -86,180 +86,648 @@
             color: #000;
         }
         
-        /* Hero section styles */
-        .hero {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 5rem 2rem;
-            min-height: 80vh;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+        /*  */
+        /* Base Styles */
+:root {
+  --primary: #6366f1;
+  --primary-light: #818cf8;
+  --primary-dark: #4f46e5;
+  --destructive: #ef4444;
+  --muted: #f3f4f6;
+  --muted-foreground: #6b7280;
+  --background: #ffffff;
+  --foreground: #1f2937;
+  --card: #ffffff;
+  --card-foreground: #1f2937;
+  --border: #e5e7eb;
+  --input: #e5e7eb;
+  --ring: #6366f1;
+  --radius: 0.5rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  color: var(--foreground);
+  background-color: #f9fafb;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+h1 {
+  font-size: 1.875rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+h4 {
+  font-size: 1rem;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+ul {
+  list-style-position: inside;
+  margin-bottom: 1rem;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+}
+
+/* Header */
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.subtitle {
+  color: var(--muted-foreground);
+}
+
+/* Card */
+.card {
+  background-color: var(--card);
+  border-radius: var(--radius);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+}
+
+.card-header {
+  padding: 1.5rem 1.5rem 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.card-header i {
+  color: var(--muted-foreground);
+  font-size: 1.25rem;
+}
+
+.card-content {
+  padding: 0.5rem 1.5rem 1.5rem;
+}
+
+.card-footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.card-description {
+  color: var(--muted-foreground);
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+/* Grid */
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 640px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Tabs */
+.tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.tab-button {
+  background-color: var(--muted);
+  border: none;
+  border-radius: var(--radius);
+  color: var(--muted-foreground);
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.75rem;
+  text-align: center;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.tab-button.active {
+  background-color: var(--primary);
+  color: white;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* Routine Tabs */
+.routine-tabs, .diet-tabs {
+  margin-top: 2rem;
+}
+
+.routine-tab-buttons, .diet-tab-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.routine-tab-button, .diet-tab-button {
+  background-color: var(--muted);
+  border: none;
+  border-radius: var(--radius);
+  color: var(--muted-foreground);
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.75rem;
+  text-align: center;
+  transition: background-color 0.2s, color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.routine-tab-button i, .diet-tab-button i {
+  margin-right: 0.5rem;
+}
+
+.routine-tab-button.active, .diet-tab-button.active {
+  background-color: var(--primary);
+  color: white;
+}
+
+.routine-tab-content, .diet-tab-content {
+  display: none;
+}
+
+.routine-tab-content.active, .diet-tab-content.active {
+  display: block;
+}
+
+/* Routine Steps */
+.routine-steps {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .routine-steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.routine-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.step-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: rgba(99, 102, 241, 0.1);
+  border-radius: 9999px;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.step-content h3 {
+  margin-bottom: 0.25rem;
+}
+
+.step-content p {
+  color: var(--muted-foreground);
+  font-size: 0.875rem;
+  margin-bottom: 0;
+}
+
+.routine-image {
+  margin-top: 1.5rem;
+}
+
+/* Food Grid */
+.food-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .food-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.food-category h3 {
+  margin-bottom: 0.75rem;
+}
+
+/* Bullet Lists */
+.bullet-list {
+  list-style: none;
+}
+
+.bullet-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.bullet-list li::before {
+  content: "";
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: var(--primary);
+  border-radius: 50%;
+  margin-right: 0.5rem;
+}
+
+.bullet-list.red li::before {
+  background-color: var(--destructive);
+}
+
+/* Frequency List */
+.frequency-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.frequency-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bold {
+  font-weight: 500;
+}
+
+/* Seasonal Grid */
+.seasonal-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+/* Stats */
+.stat {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.stat-description {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+}
+
+/* User Preferences */
+.preference-section {
+  margin-bottom: 1.5rem;
+}
+
+.preference-section h3 {
+  margin-bottom: 0.75rem;
+}
+
+.radio-group {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .radio-group {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.radio-option {
+  position: relative;
+}
+
+.radio-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.radio-option label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  background-color: var(--card);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.radio-option input[type="radio"]:checked + label {
+  border-color: var(--primary);
+}
+
+/* Button */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  font-weight: 500;
+  height: 2.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.button:hover {
+  background-color: var(--primary-dark);
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.button i {
+  margin-right: 0.5rem;
+}
+
+/* Form Elements */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.input, .select {
+  display: block;
+  width: 100%;
+  height: 2.5rem;
+  padding: 0 0.75rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--input);
+  background-color: var(--background);
+  color: var(--foreground);
+  font-size: 0.875rem;
+}
+
+.select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+  background-size: 1rem;
+  padding-right: 2rem;
+}
+
+/* Days Selector */
+.days-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.day-button {
+  width: 3rem;
+  height: 2rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background-color: var(--background);
+  color: var(--foreground);
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.day-button.active {
+  background-color: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+/* Reminders */
+.reminders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.reminder-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.reminder-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.reminder-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  background-color: rgba(99, 102, 241, 0.1);
+  color: var(--primary);
+}
+
+.reminder-details h4 {
+  margin-bottom: 0.25rem;
+}
+
+.reminder-details p {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--muted-foreground);
+  font-size: 0.875rem;
+  margin-bottom: 0;
+}
+
+.reminder-details p i {
+  font-size: 0.75rem;
+}
+
+.reminder-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 2.5rem;
+  height: 1.25rem;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--muted);
+  transition: .4s;
+  border-radius: 1.25rem;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 0.875rem;
+  width: 0.875rem;
+  left: 0.1875rem;
+  bottom: 0.1875rem;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: var(--primary);
+}
+
+input:checked + .slider:before {
+  transform: translateX(1.25rem);
+}
+
+.delete-button {
+  background: none;
+  border: none;
+  color: var(--muted-foreground);
+  cursor: pointer;
+  padding: 0.25rem;
+}
+
+.delete-button:hover {
+  color: var(--destructive);
+}
+
+/* Tips */
+.tips-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.tip {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.tip-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  background-color: rgba(99, 102, 241, 0.1);
+  color: var(--primary);
+}
+
+.tip-content h4 {
+  margin-bottom: 0.25rem;
+}
+
+.tip-content p {
+  color: var(--muted-foreground);
+  font-size: 0.875rem;
+  margin-bottom: 0;
+}
+
+/* Info Box */
+.info-box {
+  background-color: var(--muted);
+  border-radius: var(--radius);
+  padding: 0.75rem;
+}
+
+.info-box h4 {
+  margin-bottom: 0.5rem;
+}
+
+.info-box ul {
+  margin-bottom: 0;
+}
         
-        .hero-tag {
-            color: teal;
-            font-size: 0.9rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 1.5rem;
-        }
-        
-        .hero-title {
-            font-size: 3.5rem;
-            font-weight: 700;
-            color: #222;
-            line-height: 1.2;
-            max-width: 800px;
-            margin-bottom: 2rem;
-        }
-        
-        .hero-description {
-            font-size: 1.2rem;
-            color: #666;
-            max-width: 800px;
-            margin-bottom: 3rem;
-            line-height: 1.7;
-        }
-        
-        .button-container {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            font-size: 1rem;
-            font-weight: 600;
-            text-decoration: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-primary {
-            background-color: #0074e4;
-            color: white;
-            border: 2px solid #0074e4;
-        }
-        
-        .btn-primary:hover {
-            background-color: #0062c1;
-            border-color: #0062c1;
-        }
-        
-        .btn-secondary {
-            background-color: transparent;
-            color: #333;
-            border: 2px solid #ddd;
-        }
-        
-        .btn-secondary:hover {
-            background-color: #f5f5f5;
-            border-color: #ccc;
-        }
-        
-        /* Responsive styles */
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .hero-description {
-                font-size: 1.1rem;
-            }
-            
-            .hero {
-                padding: 4rem 1.5rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .hero-title {
-                font-size: 2rem;
-            }
-            
-            .hero-description {
-                font-size: 1rem;
-            }
-            
-            .button-container {
-                flex-direction: column;
-                width: 100%;
-                max-width: 300px;
-            }
-            
-            .btn {
-                width: 100%;
-                text-align: center;
-            }
-        }
-        .containe {
-            padding: 40px 20px;
-            text-align: center;
-        }
-        h1 {
-            font-size: 32px;
-            color: #222;
-        }
-        p.subtitle {
-            color: #6c757d;
-            font-size: 18px;
-        }
-        .cards {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 30px;
-            flex-wrap: wrap;
-        }
-        .card {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            text-align: left;
-        }
-        .icon {
-            font-size: 24px;
-            background: #e7f0ff;
-            padding: 10px;
-            border-radius: 50%;
-            display: inline-block;
-        }
-        .card h2 {
-            font-size: 20px;
-            margin-top: 15px;
-            color: #222;
-        }
-        .card p {
-            color: #6c757d;
-            font-size: 16px;
-        }
-        .btn {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 12px 20px;
-            background: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 16px;
-            font-weight: bold;
-        }
-        .btn:hover {
-            background: #0056b3;
-        }
-        
-    </style>
-</head>
+       </style>
+    </head>
 <body>
     <nav class="navbar">
         <div class="navbar-container">
@@ -283,44 +751,526 @@
            
         </div>
     </nav>
-    <section class="hero">
-        <div class="hero-content">
-            <p class="hero-tag">Introducing SkinHaven</p>
-            <h1 class="hero-title">Discover Your Perfect Skin Solution</h1>
-            <p class="hero-description">
-                Our advanced skin diagnosis technology analyzes your unique skin profile and recommends personalized treatments tailored just for you.
-            </p>
-            <div class="button-container">
-                <a href="#diagnosis" class="btn btn-primary">Start Diagnosis</a>
-                <a href="#learn-more" class="btn btn-secondary">Learn More</a>
-            </div>
-        </div>
-    </section>
+   <!--  -->
+      <div class="container">
+        <header>
+          <h1>Skin Care Routine Guide</h1>
+          <p class="subtitle">Discover the perfect routine for your skin type and dietary preferences</p>
+        </header>
     
-    <section>
-        <div class="containe">
-            <h1>How It Works</h1>
-            <p class="subtitle">Our AI-powered technology makes skin diagnosis simple and effective</p>
-            <div class="cards">
-                <div class="card">
-                    <div class="icon">😊</div>
-                    <h2>Upload Your Photo</h2>
-                    <p>Take or upload a photo of your skin in natural lighting for the most accurate analysis.</p>
+        <!-- User Preferences Section -->
+        <section class="card" id="preferences-card">
+          <div class="card-header">
+            <h2>Personalize Your Recommendations</h2>
+            <p class="card-description">Select your skin type and dietary preferences for customized recommendations</p>
+          </div>
+          <div class="card-content">
+            <div class="preference-section">
+              <h3>Skin Type</h3>
+              <div class="radio-group">
+                <div class="radio-option">
+                  <input type="radio" id="normal" name="skinType" value="normal" checked>
+                  <label for="normal">Normal</label>
                 </div>
-                <div class="card">
-                    <div class="icon">⚠️</div>
-                    <h2>AI Analysis</h2>
-                    <p>Our intelligent algorithm analyzes your skin's condition, identifying concerns and needs.</p>
+                <div class="radio-option">
+                  <input type="radio" id="dry" name="skinType" value="dry">
+                  <label for="dry">Dry</label>
                 </div>
-                <div class="card">
-                    <div class="icon">🔥</div>
-                    <h2>Personalized Recommendations</h2>
-                    <p>Receive customized product recommendations and skincare routines based on your unique skin profile.</p>
+                <div class="radio-option">
+                  <input type="radio" id="oily" name="skinType" value="oily">
+                  <label for="oily">Oily</label>
                 </div>
+                <div class="radio-option">
+                  <input type="radio" id="combination" name="skinType" value="combination">
+                  <label for="combination">Combination</label>
+                </div>
+              </div>
             </div>
-            <a href="#" class="btn">Try Skin Diagnosis</a>
+    
+            <div class="preference-section">
+              <h3>Dietary Preference</h3>
+              <div class="radio-group">
+                <div class="radio-option">
+                  <input type="radio" id="omnivore" name="dietType" value="omnivore" checked>
+                  <label for="omnivore">Non-Vegetarian</label>
+                </div>
+                <div class="radio-option">
+                  <input type="radio" id="vegetarian" name="dietType" value="vegetarian">
+                  <label for="vegetarian">Vegetarian</label>
+                </div>
+                <div class="radio-option">
+                  <input type="radio" id="vegan" name="dietType" value="vegan">
+                  <label for="vegan">Vegan</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <button id="update-preferences" class="button">Update Preferences</button>
+          </div>
+        </section>
+    
+        <!-- Tabs Navigation -->
+        <div class="tabs">
+          <button class="tab-button active" data-tab="routine">Skin Care Routine</button>
+          <button class="tab-button" data-tab="diet">Diet Recommendations</button>
+          <button class="tab-button" data-tab="reminders">Reminders</button>
         </div>
-    </section>
+    
+        <!-- Skin Care Routine Tab -->
+        <section id="routine" class="tab-content active">
+          <div class="grid-container">
+            <div class="card">
+              <div class="card-header">
+                <h2 id="skin-type-title">Your Skin Type: Normal</h2>
+                <i class="fas fa-droplet"></i>
+              </div>
+              <div class="card-content">
+                <p id="skin-description" class="card-description">Normal skin is well-balanced: not too oily and not too dry.</p>
+                <div class="info-box">
+                  <h4>Recommended Products</h4>
+                  <ul id="recommended-products">
+                    <li>Gentle foaming cleanser</li>
+                    <li>Hydrating toner with antioxidants</li>
+                    <li>Vitamin C serum for brightness</li>
+                    <li>Lightweight, hydrating moisturizer</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+    
+            <div class="card">
+              <div class="card-header">
+                <h2>Routine Frequency</h2>
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="card-content">
+                <p class="card-description">How often you should perform each step in your routine.</p>
+                <div class="frequency-list">
+                  <div class="frequency-item">
+                    <span>Cleansing</span>
+                    <span class="bold">Twice daily</span>
+                  </div>
+                  <div class="frequency-item">
+                    <span>Exfoliation</span>
+                    <span id="exfoliation-frequency" class="bold">2-3 times weekly</span>
+                  </div>
+                  <div class="frequency-item">
+                    <span>Masks</span>
+                    <span id="mask-frequency" class="bold">1-2 times weekly</span>
+                  </div>
+                  <div class="frequency-item">
+                    <span>Serums</span>
+                    <span class="bold">Daily</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+    
+            <div class="card">
+              <div class="card-header">
+                <h2>Seasonal Adjustments</h2>
+                <i class="fas fa-sun"></i>
+              </div>
+              <div class="card-content">
+                <p class="card-description">Adjust your routine based on seasonal changes.</p>
+                <div class="seasonal-grid">
+                  <div>
+                    <h4>Summer</h4>
+                    <ul class="bullet-list">
+                      <li>Lighter moisturizers</li>
+                      <li>Higher SPF protection</li>
+                      <li>More frequent cleansing</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4>Winter</h4>
+                    <ul class="bullet-list">
+                      <li>Richer moisturizers</li>
+                      <li>Hydrating serums</li>
+                      <li>Gentle exfoliation</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    
+          <div class="routine-tabs">
+            <div class="routine-tab-buttons">
+              <button class="routine-tab-button active" data-routine-tab="morning">
+                <i class="fas fa-sun"></i> Morning Routine
+              </button>
+              <button class="routine-tab-button" data-routine-tab="evening">
+                <i class="fas fa-moon"></i> Evening Routine
+              </button>
+            </div>
+    
+            <div id="morning" class="routine-tab-content active">
+              <div class="routine-steps">
+                <div class="routine-step">
+                  <div class="step-number">1</div>
+                  <div class="step-content">
+                    <h3>Cleanser</h3>
+                    <p id="morning-cleanser">Gentle foaming cleanser</p>
+                  </div>
+                </div>
+                <div class="routine-step">
+                  <div class="step-number">2</div>
+                  <div class="step-content">
+                    <h3>Toner</h3>
+                    <p id="morning-toner">Hydrating toner with antioxidants</p>
+                  </div>
+                </div>
+                <div class="routine-step">
+                  <div class="step-number">3</div>
+                  <div class="step-content">
+                    <h3>Serum</h3>
+                    <p id="morning-serum">Vitamin C serum for brightness</p>
+                  </div>
+                </div>
+                <div class="routine-step">
+                  <div class="step-number">4</div>
+                  <div class="step-content">
+                    <h3>Eye Cream</h3>
+                    <p>Gently pat eye cream around the orbital bone.</p>
+                  </div>
+                </div>
+                <div class="routine-step">
+                  <div class="step-number">5</div>
+                  <div class="step-content">
+                    <h3>Moisturizer</h3>
+                    <p id="morning-moisturizer">Lightweight, hydrating moisturizer</p>
+                  </div>
+                </div>
+                <div class="routine-step">
+                  <div class="step-number">6</div>
+                  <div class="step-content">
+                    <h3>Sunscreen</h3>
+                    <p id="morning-sunscreen">Broad-spectrum SPF 30</p>
+                  </div>
+                </div>
+              </div>
+              <div class="routine-image">
+                <!-- <img src="./img/cart-hero.avif" alt="Morning skincare routine products"> -->
+              </div>
+            </div>
+    
+            <div id="evening" class="routine-tab-content">
+              <div class="routine-steps">
+                <div class="routine-step">
+                  <div class="step-number">1</div>
+                  <div class="step-content">
+                    <h3>Oil Cleanser</h3>
+                    <p>Remove makeup and sunscreen with an oil-based cleanser.</p>
+                  </div>
+                </div>
+                <div class="routine-step">
+                  <div class="step-number">2</div>
+                  <div class="step-content">
+                    <h3>Water-Based Cleanser</h3>
+                    <p id="evening-cleanser">Gentle foaming cleanser</p>
+                  </div>
+                </div>
+                <div class="routine-step">
+                  <div class="step-number">3</div>
+                  <div class="step-content">
+                    <h3 id="exfoliation-title">Exfoliation (2-3x weekly)</h3>
+                    <p id="evening-exfoliant">Mild AHA exfoliant</p>
+                  </div>
+                </div>
+                <div class="routine-step">
+                  <div class="step-number">4</div>
+                  <div class="step-content">
+                    <h3>Toner</h3>
+                    <p id="evening-toner">Hydrating toner with antioxidants</p>
+                  </div>
+                </div>
+                <div class="routine-step">
+                  <div class="step-number">5</div>
+                  <div class="step-content">
+                    <h3>Treatment Serums</h3>
+                    <p id="evening-serum">Vitamin C serum for brightness</p>
+                  </div>
+                </div>
+                <div class="routine-step">
+                  <div class="step-number">6</div>
+                  <div class="step-content">
+                    <h3>Night Cream</h3>
+                    <p id="evening-nightcream">Nourishing night cream with peptides</p>
+                  </div>
+                </div>
+              </div>
+              <div class="routine-image">
+                <img src="https://placehold.co/800x300" alt="Evening skincare routine products">
+              </div>
+            </div>
+          </div>
+        </section>
+    
+        <!-- Diet Recommendations Tab -->
+        <section id="diet" class="tab-content">
+          <div class="grid-container">
+            <div class="card">
+              <div class="card-header">
+                <h2>Hydration</h2>
+                <i class="fas fa-droplet"></i>
+              </div>
+              <div class="card-content">
+                <div class="stat">8-10</div>
+                <p class="stat-description">Glasses of water daily</p>
+              </div>
+            </div>
+    
+            <div class="card">
+              <div class="card-header">
+                <h2>Antioxidants</h2>
+                <i class="fas fa-shield"></i>
+              </div>
+              <div class="card-content">
+                <div class="stat">5+</div>
+                <p class="stat-description">Servings of fruits & vegetables</p>
+              </div>
+            </div>
+    
+            <div class="card">
+              <div class="card-header">
+                <h2>Healthy Fats</h2>
+                <i class="fas fa-bolt"></i>
+              </div>
+              <div class="card-content">
+                <div class="stat">15-20%</div>
+                <p class="stat-description">Of daily caloric intake</p>
+              </div>
+            </div>
+    
+            <div class="card">
+              <div class="card-header">
+                <h2>Diet Type</h2>
+                <i class="fas fa-apple-whole"></i>
+              </div>
+              <div class="card-content">
+                <div id="diet-type-display" class="stat">Non-Vegetarian</div>
+                <p id="diet-description" class="stat-description">A balanced diet including both plant and animal foods.</p>
+              </div>
+            </div>
+          </div>
+    
+          <div class="card">
+            <div class="card-header">
+              <h2>Foods for Healthy Skin</h2>
+              <p class="card-description">Recommended foods based on your dietary preference</p>
+            </div>
+            <div class="card-content">
+              <div class="food-grid">
+                <div class="food-category">
+                  <h3>Protein Sources</h3>
+                  <ul id="protein-sources" class="bullet-list">
+                    <li>Fatty fish (salmon, mackerel)</li>
+                    <li>Chicken</li>
+                    <li>Eggs</li>
+                    <li>Lean beef</li>
+                    <li>Turkey</li>
+                  </ul>
+                </div>
+                <div class="food-category">
+                  <h3>Collagen-Supporting Foods</h3>
+                  <ul id="collagen-sources" class="bullet-list">
+                    <li>Bone broth</li>
+                    <li>Chicken skin</li>
+                    <li>Fish with skin</li>
+                    <li>Beef</li>
+                    <li>Pork</li>
+                  </ul>
+                </div>
+                <div class="food-category">
+                  <h3>Skin Superfoods</h3>
+                  <ul id="superfoods" class="bullet-list">
+                    <li>Berries</li>
+                    <li>Nuts</li>
+                    <li>Avocados</li>
+                    <li>Fatty fish</li>
+                    <li>Eggs</li>
+                    <li>Olive oil</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+    
+          <div class="diet-tabs">
+            <div class="diet-tab-buttons">
+              <button class="diet-tab-button active" data-diet-tab="eat">Foods to Eat</button>
+              <button class="diet-tab-button" data-diet-tab="avoid">Foods to Avoid</button>
+            </div>
+    
+            <div id="eat" class="diet-tab-content active">
+              <div class="grid-container">
+                <div class="card">
+                  <div class="card-header">
+                    <h2>Antioxidant-Rich Foods</h2>
+                    <p class="card-description">Fight free radicals and reduce inflammation</p>
+                  </div>
+                  <div class="card-content">
+                    <ul class="bullet-list">
+                      <li>Blueberries, strawberries, and other berries</li>
+                      <li>Dark chocolate (70%+ cocoa)</li>
+                      <li>Leafy greens like spinach and kale</li>
+                      <li>Beans, peas, and lentils</li>
+                    </ul>
+                  </div>
+                </div>
+    
+                <div class="card">
+                  <div class="card-header">
+                    <h2>Vitamin-Rich Foods</h2>
+                    <p class="card-description">Support skin health and regeneration</p>
+                  </div>
+                  <div class="card-content">
+                    <ul class="bullet-list">
+                      <li>Citrus fruits (vitamin C)</li>
+                      <li>Sweet potatoes (vitamin A)</li>
+                      <li>Nuts and seeds (vitamin E)</li>
+                      <li>Mushrooms (vitamin D)</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+    
+            <div id="avoid" class="diet-tab-content">
+              <div class="grid-container">
+                <div class="card">
+                  <div class="card-header">
+                    <h2>Inflammatory Foods</h2>
+                    <p class="card-description">Can trigger skin issues and accelerate aging</p>
+                  </div>
+                  <div class="card-content">
+                    <ul class="bullet-list red">
+                      <li>Processed foods with artificial ingredients</li>
+                      <li>Refined carbohydrates and sugars</li>
+                      <li>Fried foods and trans fats</li>
+                      <li>Excessive alcohol</li>
+                    </ul>
+                  </div>
+                </div>
+    
+                <div class="card">
+                  <div class="card-header">
+                    <h2>Common Trigger Foods</h2>
+                    <p class="card-description">May cause breakouts or skin reactions</p>
+                  </div>
+                  <div class="card-content">
+                    <ul class="bullet-list red">
+                      <li>Dairy products (for some people)</li>
+                      <li>High-glycemic foods</li>
+                      <li>Chocolate (for some individuals)</li>
+                      <li>Spicy foods (can trigger rosacea)</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+    
+        <!-- Reminders Tab -->
+        <section id="reminders" class="tab-content">
+          <div class="card">
+            <div class="card-header">
+              <h2>Skin Care Reminders</h2>
+              <p class="card-description">Set up reminders for your skin care routine</p>
+            </div>
+            <div class="card-content">
+              <div id="reminders-list" class="reminders-list">
+                <!-- Reminders will be added here by JavaScript -->
+              </div>
+            </div>
+          </div>
+    
+          <div class="card">
+            <div class="card-header">
+              <h2>Add New Reminder</h2>
+              <p class="card-description">Create a new reminder for your skin care routine</p>
+            </div>
+            <div class="card-content">
+              <div class="form-group">
+                <label for="reminder-routine">Routine</label>
+                <select id="reminder-routine" class="select">
+                  <option value="Morning Routine">Morning Routine</option>
+                  <option value="Evening Routine">Evening Routine</option>
+                  <option value="Exfoliation">Exfoliation</option>
+                  <option value="Face Mask">Face Mask</option>
+                  <option value="Serum Application">Serum Application</option>
+                  <option value="Moisturizing">Moisturizing</option>
+                </select>
+              </div>
+    
+              <div class="form-group">
+                <label for="reminder-time">Time</label>
+                <input type="time" id="reminder-time" class="input" value="08:00">
+              </div>
+    
+              <div class="form-group">
+                <label>Days</label>
+                <div class="days-selector">
+                  <button class="day-button active" data-day="Mon">Mon</button>
+                  <button class="day-button active" data-day="Tue">Tue</button>
+                  <button class="day-button active" data-day="Wed">Wed</button>
+                  <button class="day-button active" data-day="Thu">Thu</button>
+                  <button class="day-button active" data-day="Fri">Fri</button>
+                  <button class="day-button active" data-day="Sat">Sat</button>
+                  <button class="day-button active" data-day="Sun">Sun</button>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <button id="add-reminder" class="button">
+                <i class="fas fa-plus"></i> Add Reminder
+              </button>
+            </div>
+          </div>
+    
+          <div class="card">
+            <div class="card-header">
+              <h2>Reminder Tips</h2>
+              <p class="card-description">Make the most of your skin care routine with these tips</p>
+            </div>
+            <div class="card-content">
+              <div class="tips-list">
+                <div class="tip">
+                  <div class="tip-icon">
+                    <i class="fas fa-calendar"></i>
+                  </div>
+                  <div class="tip-content">
+                    <h4>Consistency is Key</h4>
+                    <p>Set reminders for the same time each day to build a consistent routine.</p>
+                  </div>
+                </div>
+                <div class="tip">
+                  <div class="tip-icon">
+                    <i class="fas fa-clock"></i>
+                  </div>
+                  <div class="tip-content">
+                    <h4>Allow Enough Time</h4>
+                    <p>Schedule your routine when you have at least 10-15 minutes to properly apply products.</p>
+                  </div>
+                </div>
+                <div class="tip">
+                  <div class="tip-icon">
+                    <i class="fas fa-bell"></i>
+                  </div>
+                  <div class="tip-content">
+                    <h4>Special Treatment Reminders</h4>
+                    <p>Set specific reminders for treatments that aren't daily, like exfoliation or masks.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    
     <section id="foot">
         <footer class="footer" style="height: 370px;">
             <div class="footer-container">
@@ -398,5 +1348,7 @@
             </div>
           </footer>
         </section>
+
+        <script src="./js/routein.js"></script>
 </body>
 </html>

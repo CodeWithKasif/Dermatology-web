@@ -5,6 +5,95 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Skin Diagnosis</title>
     <link rel="stylesheet" href="style.css">
+    <style> 
+      .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            width: 50vw;
+            background: lightcyan;
+            border-radius: 50%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            position: relative;
+        }
+
+        .circle-container {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            animation: rotate 30s linear infinite;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .central-circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+            background: #fff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        .central-text {
+            font-size: 1.2rem;
+            color: #333;
+            text-align: center;
+        }
+
+        .factor {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.5s ease;
+            opacity: 0.8;
+            transform-origin: center;
+            animation: counter-rotate 30s linear infinite; /* Moved to factor */
+        }
+
+        .factor img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .factor span {
+            font-size: 0.8rem;
+            text-align: center;
+            color: #333;
+            position: absolute;
+            bottom: -20px;
+            width: 100px;
+            /* Removed counter-rotate animation from here */
+        }
+
+        @keyframes rotate {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        @keyframes counter-rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(-360deg); }
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -53,25 +142,29 @@
             <p>Shop our curated collection of dermatologist-recommended skincare products.</p>
             <button class="feature-btn">Shop Now</button>
         </div>
-        <div class="feature-card" >
+        <div class="feature-card" onclick="info()" >
             <img src="./img/ab.jpeg" alt="AI Chatbot">
-            <h3>Skin</h3>
-            <p>Start knowing about skin.</p>
+            <h3>know about skin</h3>
+            <p>Start knowing about the skin how to enhance glow and make diet good.</p>
             <button class="feature-btn">Chat Now</button>
         </div>
     </section>
+    <!-- animation -->
+    <div class="container">
+      <div class="circle-container">
+          <!-- Factors will be added here -->
+      </div>
+      <div class="central-circle">
+          <div class="central-text">Hover on factors<br>to see details</div>
+      </div>
+  </div>
     <!-- foot -->
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+    
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
         <link rel="stylesheet" href="footer.css">
-    </head>
-    <body>
-        <footer class="footer" style="height: 370px;">
+  
+    
+        <footer class="footer" style="height: 370px; margin-top: 50px;">
             <div class="footer-container">
               <!-- Brand Section -->
               <div class="footer-column">
@@ -166,6 +259,51 @@
         function DermaTouch(){
             window.location.href="DermaTouch.html"
         }
+        function info(){
+            window.location.href="./aknowledge skin/html/index.html"
+        }
+    </script>
+    <script>
+        const factors = [
+            { name: 'ENVIRONMENT', image: '/frontend/img/enviorment.png' },
+            { name: 'DIET', image: '' },
+            { name: 'AGING', image: '' },
+            { name: 'MENSTRUAL CYCLE', image: '/frontend/img/menses.webp' },
+            { name: 'LIFESTYLE', image: '' },
+            { name: 'SKINCARE', image: '' }
+        ];
+
+        const container = document.querySelector('.circle-container');
+        const centralText = document.querySelector('.central-text');
+
+        factors.forEach((factor, index) => {
+            const angle = (index * 60) * (Math.PI / 180);
+            const radius = 200;
+            
+            const factorElement = document.createElement('div');
+            factorElement.className = 'factor';
+            factorElement.innerHTML = `
+                <img src="${factor.image}" alt="${factor.name}">
+                <span>${factor.name}</span>
+            `;
+
+            // Position elements in circle
+            factorElement.style.left = Math.cos(angle) * radius + 250 + 'px';
+            factorElement.style.top = Math.sin(angle) * radius + 250 + 'px';
+
+            // Hover effects
+            factorElement.addEventListener('mouseover', () => {
+                centralText.textContent = factor.name;
+                factorElement.querySelector('img').style.transform = 'scale(1.2)';
+            });
+
+            factorElement.addEventListener('mouseout', () => {
+                centralText.textContent = 'Hover on factors\nto see details';
+                factorElement.querySelector('img').style.transform = 'scale(1)';
+            });
+
+            container.appendChild(factorElement);
+        });
     </script>
 
 <script>

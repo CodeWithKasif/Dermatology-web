@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skin Conditions - SkinHealth</title>
+    <link rel="stylesheet" href="../css/globals.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/accordion.css">
+</head>
+<body class="min-h-screen bg-background text-foreground">
+    <div class="flex min-h-screen flex-col">
+        <header class="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+            <div class="container flex h-16 items-center justify-between">
+                <a href="index.html" class="flex items-center gap-2 font-semibold">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary">
+                        <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+                        <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+                        <path d="M4 22h16"></path>
+                        <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
+                        <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
+                        <path d="M9 5v8"></path>
+                        <path d="M15 5v8"></path>
+                        <path d="M9 13h6"></path>
+                    </svg>
+                    SkinHealth
+                </a>
+                <nav class="hidden md:flex items-center gap-6">
+                    <a href="skin-types.html" class="text-sm font-medium transition-colors hover:text-primary">Skin Types</a>
+                    <a href="conditions.html" class="text-sm font-medium transition-colors hover:text-primary text-primary">Conditions</a>
+                    <a href="treatments.html" class="text-sm font-medium transition-colors hover:text-primary">Treatments</a>
+                    <!-- <a href="diet.html" class="text-sm font-medium transition-colors hover:text-primary">Diet & Nutrition</a>
+                    <a href="skincare.html" class="text-sm font-medium transition-colors hover:text-primary">Skincare</a> -->
+                </nav>
+                <button class="md:hidden" id="mobile-menu-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="4" x2="20" y1="12" y2="12"></line>
+                        <line x1="4" x2="20" y1="6" y2="6"></line>
+                        <line x1="4" x2="20" y1="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+        </header>
+        
+        <div class="mobile-menu hidden" id="mobile-menu">
+            <div class="container py-4 flex flex-col gap-4">
+                <a href="skin-types.html" class="text-sm font-medium transition-colors hover:text-primary">Skin Types</a>
+                <a href="conditions.html" class="text-sm font-medium transition-colors hover:text-primary text-primary">Conditions</a>
+                <a href="treatments.html" class="text-sm font-medium transition-colors hover:text-primary">Treatments</a>
+                <a href="diet.html" class="text-sm font-medium transition-colors hover:text-primary">Diet & Nutrition</a>
+                <a href="skincare.html" class="text-sm font-medium transition-colors hover:text-primary">Skincare</a>
+            </div>
+        </div>
+        
+        <main class="flex-1">
+            <section class="w-full py-12 md:py-24 lg:py-32 bg-muted">
+                <div class="container px-4 md:px-6">
+                    <div class="flex flex-col items-center justify-center space-y-4 text-center">
+                        <div class="space-y-2">
+                            <h1 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Common Skin Conditions</h1>
+                            <p class="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
+                                Learn about various skin conditions, their causes, symptoms, and treatment options.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="w-full py-12 md:py-24">
+                <div class="container px-4 md:px-6">
+                    <div class="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center mb-12">
+                        <div class="space-y-4">
+                            <h2 class="text-3xl font-bold tracking-tighter">Understanding Skin Conditions</h2>
+                            <p class="text-muted-foreground">
+                                Skin conditions can affect anyone at any age. They can be temporary or permanent, and may be painless or cause discomfort. Some conditions are situational and appear in response to triggers, while others are genetic.
+                            </p>
+                            <p class="text-muted-foreground">
+                                Early diagnosis and treatment can help manage symptoms and prevent complications. If you're experiencing persistent skin issues, consult with a dermatologist for proper evaluation.
+                            </p>
+                        </div>
+                        <div class="flex justify-center">
+                            <div class="relative h-[300px] w-full overflow-hidden rounded-xl">
+                                <img src="../images/skin-conditions-overview.jpg" alt="Skin Conditions Overview" class="object-cover w-full h-full" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <button class="accordion-trigger active" data-accordion="acne">
+                                Acne
+                            </button>
+                            <div class="accordion-content active" id="acne">
+                                <div class="grid gap-6 md:grid-cols-2 items-start">
+                                    <div class="space-y-4">
+                                        <p>
+                                            Acne is a common skin condition that occurs when hair follicles become clogged with oil and dead skin cells, leading to whiteheads, blackheads, or pimples.
+                                        </p>
+                                        
+                                        <div class="space-y-2">
+                                            <h4 class="font-semibold">Causes</h4>
+                                            <ul class="list-disc pl-5 space-y-1">
+                                                <li>Excess oil production</li>
+                                                <li>Hair follicles clogged by oil and dead skin cells</li>
+                                                <li>Bacteria (Propionibacterium acnes)</li>
+                                                <li>Inflammation</li>
+                                                <li>Hormonal changes</li>
+                                                <li>Certain medications</li>
+                                                <li>Diet (high-glycemic foods, dairy)</li>
+                                                <li>Stress</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="space-y-2">
+                                            <h4 class="font-semibold">Symptoms</h4>
+                                            <ul class="list-disc pl-5 space-y-1">
+                                                <li>Whiteheads (closed plugged pores)</li>
+                                                <li>Blackheads (open plugged pores)</li>
+                                                <li>Papules (small red, tender bumps)</li>
+                                                <li>Pustules (papules with pus at their tips)</li>
+                                                <li>Nodules (large, solid, painful lumps beneath the skin)</li>
+                                                <li>Cystic lesions (painful, pus-filled lumps beneath the skin)</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <img src="../images/acne.jpg" alt="Acne" class="rounded-image mb-4" />
+                                        <div class="space-y-2">
+                                            <h4 class="font-semibold">Treatment Options</h4>
+                                            <ul class="list-disc pl-5 space-y-1">
+                                                <li>Topical treatments (benzoyl peroxide, salicylic acid, retinoids)</li>
+                                                <li>Oral medications (antibiotics, combined oral contraceptives)</li>
+                                                <li>Isotretinoin for severe cases</li>
+                                                <li>Chemical peels</li>
+                                                <li>Light therapy</li>
+                                                <li>Extraction of large cysts</li>
+                                            </ul>
+                                            <a href="treatments.html#acne" class="inline-flex h-9 items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 mt-4">
+                                                View Treatment Details
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <button class="accordion-trigger" data-accordion="eczema">
+                                Eczema (Atopic Dermatitis)
+                            </button>
+                            <div class="accordion-content" id="eczema">
+                                <div class="grid gap-6 md:grid-cols-2 items-start">
+                                    <div class="space-y-4">
+                                        <p>
+                                            Eczema is a chronic condition that causes the skin to become itchy, red, dry, and cracked. It's common in children but can occur at any age.
+                                        </p>
+                                        
+                                        <div class="space-y-2">
+                                            <h4 class="font-semibold">Causes</h4>
+                                            <ul class="list-disc pl-5 space-y-1">
+                                                <li>Genetic factors</li>
+                                                <li>Immune system dysfunction</li>
+                                                <li>Environmental triggers</li>
+                                                <li>Skin barrier dysfunction</li>
+                                                <li>Allergies</li>
+                                                <li>Stress</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="space-y-2">
+                                            <h4 class="font-semibold">Symptoms</h4>
+                                            <ul class="list-disc pl-5 space-y-1">
+                                                <li>Dry, sensitive skin</li>
+                                                <li>Intense itching</li>
+                                                <li>Red to brownish-gray patches</li>
+                                                <li>Small, raised bumps</li>
+                                                <li>Thickened, cracked, scaly skin</li>
+                                                <li>Raw, sensitive skin from scratching</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <img src="../images/eczema.jpg" alt="Eczema" class="rounded-image mb-4" />
+                                        <div class="space-y-2">
+                                            <h4 class="font-semibold">Treatment Options</h4>
+                                            <ul class="list-disc pl-5 space-y-1">
+                                                <li>Moisturizers to prevent dryness</li>
+                                                <li>Topical corticosteroids to reduce inflammation</li>
+                                                <li>Topical calcineurin inhibitors</li>
+                                                <li>Antihistamines for itching</li>
+                                                <li>Phototherapy</li>
+                                                <li>Immunosuppressants for severe cases</li>
+                                                <li>Biologics (dupilumab)</li>
+                                            </ul>
+                                            <a href="treatments.html#eczema" class="inline-flex h-9 items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 mt-4">
+                                                View Treatment Details
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <button class="accordion-trigger" data-accordion="psoriasis">
+                                Psoriasis
+                            </button>
+                            <div class="accordion-content" id="psoriasis">
+                                <div class="grid gap-6 md:grid-cols-2 items-start">
+                                    <div class="space-y-4">
+                                        <p>
+                                            Psoriasis is a chronic autoimmune condition that causes rapid buildup of skin cells, resulting in scaling on the skin's surface.
+                                        </p>
+                                        
+                                        <div class="space-y-2">
+                                            <h4 class="font-semibold">Causes</h4>
+                                            <ul class="list-disc pl-5 space-y-1">
+                                                <li>Immune system dysfunction</li>
+                                                <li>Genetic predisposition</li>
+                                                <li>Environmental triggers</li>
+                                                <li>Stress</li>
+                                                <li>Infections (strep throat)</li>
+                                                <li>Injuries to the skin</li>
+                                                <li>Certain medications</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="space-y-2">
+                                            <h4 class="font-semibold">Symptoms</h4>
+                                            <ul class="list-disc pl-5 space-y-1">
+                                                <li>Red patches of skin covered with silvery scales</li>
+                                                <li>Dry, cracked skin that may bleed</li>
+                                                <li>Itching, burning, or soreness</li>
+                                                <li>Thickened, pitted, or ridged nails</li>
+                                                <li>Swollen and stiff joints</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <img src="../images/psoriasis.jpg" alt="Psoriasis" class="rounded-image mb-4" />
+                                        <div class="space-y-2">
+                                            <h4 class="font-semibold">Treatment Options</h4>
+                                            <ul class="list-disc pl-5 space-y-1">
+                                                <li>Topical treatments (corticosteroids, vitamin D analogues)</li>
+                                                <li>Light therapy (phototherapy)</li>
+                                                <li>Oral medications (methotrexate, cyclosporine)</li>
+                                                <li>Biologics (targeting specific immune system pathways)</li>
+                                                <li>Lifestyle modifications</li>
+                                            </ul>
+                                            <a href="treatments.html#psoriasis" class="inline-flex h-9 items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 mt-4">
+                                                View Treatment Details
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <button class="accordion-trigger" data-accordion="rosacea">
+                                Rosacea
+                            </button>
+                            <div class="accordion-content" id="rosacea">
+                                <div class="grid gap-6 md:grid-cols-2 items-start">
+                                    <div class="space-y-4">
+                                        <p>
+                                            Rosacea is a chronic inflammatory skin condition that primarily affects the face, causing redness, visible blood vessels, and sometimes small, red, pus-filled bumps.
+                                        </p>
+                                        
+                                        <div class="space-y-2">
+                                            <h4 class="font-semibold">Causes</h4>
+                                            <ul class="list-disc pl-5 space-y-1">
+                                                <li>Blood vessel abnormalities</li>
+                                                <li>Demodex folliculorum mites</li>
+                                                <li>Genetic factors</li>
+                                                <li>Immune system reactions</li>
+                                                <li>Environmental factors</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="space-y-2">
+                                            <h4 class="font-semibold">Symptoms</h4>
+                                            <ul class="list-disc pl-5 space-y-1">
+                                                <li>Facial redness (persistent)</li>
+                                                <li>Visible blood vessels (telangiectasia)</li>
+                                                <li>Swollen red bumps (papules and pustules)</li>
+                                                <li>Eye problems (dry, irritated, swollen eyes)</li>
+                                                <li>Enlarged nose (rhinophyma)</li>
+                                                <li>Burning or stinging sensation</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <img src="../images/rosacea.jpg" alt="Rosacea" class="rounded-image mb-4" />
+                                        <div class="space-y-2">
+                                            <h4 class="font-semibold">Treatment Options</h4>
+                                            <ul class="list-disc pl-5 space-y-1">
+                                                <li>Topical medications (metronidazole, azelaic acid)</li>
+                                                <li>Oral antibiotics (doxycycline)</li>
+                                                <li>Isotretinoin for severe cases</li>
+                                                <li>Laser therapy for visible blood vessels</li>
+                                                <li>Trigger avoidance</li>
+                                                <li>Gentle skincare routine</li>
+                                            </ul>
+                                            <a href="treatments.html#rosacea" class="inline-flex h-9 items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 mt-4">
+                                                View Treatment Details
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <button class="accordion-trigger" data-accordion="melasma">
+                                Melasma
+                            </button>
+                            <div class="accordion-content" id="melasma">
+                                <div class="grid gap-6 md:grid-cols-2 items-start">
+                                    <div class="space-y-4">
+                                        <p>
+                                            Melasma is a common skin condition that causes brown or grayish-brown patches on the face, particularly on the cheeks, bridge of the nose, forehead, chin, and above the upper lip.
+                                        </p>
+                                        
+                                        <div class="space-y-2">
+                                            <h4 class="font-semibold">Causes</h4>
+                                            <ul class="list-disc pl-5 space-y-1">
+                                                <li>Hormonal changes (pregnancy, birth control pills)</li>
+                                                <li>Sun exposure</li>
+                                                <li>Genetic predisposition</li>
+                                                <li>Skin care products that irritate the skin</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="space-y-2">
+                                            <h4 class="font-semibold">Symptoms</h4>
+                                            <ul class="list-disc pl-5 space-y-1">
+                                                <li>Brown or gray-brown patches</li>
+                                                <li>Symmetrical patches on both sides of the face</li>
+                                                <li>Most common on the cheeks, forehead, nose, and upper lip</li>
+                                                <li>No other symptoms (not painful or itchy)</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <img src="../images/melasma.jpg" alt="Melasma" class="rounded-image mb-4" />
+                                        <div class="space-y-2">
+                                            <h4 class="font-semibold">Treatment Options</h4>
+                                            <ul class="list-disc pl-5 space-y-1">
+                                                <li>Sun protection (most important)</li>
+                                                <li>Topical treatments (hydroquinone, tretinoin, corticosteroids)</li>
+                                                <li>Chemical peels</li>
+                                                <li>Microdermabrasion</li>
+                                                <li>Laser treatments</li>
+                                                <li>Hormone regulation</li>
+                                            </ul>
+                                            <a href="treatments.html#melasma" class="inline-flex h-9 items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 mt-4">
+                                                View Treatment Details
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="w-full py-12 md:py-24 lg:py-32 bg-muted">
+                <div class="container px-4 md:px-6">
+                    <div class="flex flex-col items-center justify-center space-y-4 text-center">
+                        <div class="space-y-2">
+                            <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl">Concerned About Your Skin?</h2>
+                            <p class="mx-auto max-w-[700px] text-muted-foreground">
+                                Take our interactive quiz to identify potential skin conditions and get personalized recommendations.
+                            </p>
+                        </div>
+                        <a href="quiz.html" class="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring">
+                            Take the Quiz
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="w-full border-t py-6 md:py-0">
+            <div class="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row">
+                <p class="text-center text-sm leading-loose text-muted-foreground md:text-left">
+                    © 2025 SkinHealth. All rights reserved.
+                </p>
+                <div class="flex gap-4">
+                    <a href="#" class="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
+                        About
+                    </a>
+                    <a href="#" class="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
+                        Contact
+                    </a>
+                    <a href="#" class="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
+                        Privacy
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
+

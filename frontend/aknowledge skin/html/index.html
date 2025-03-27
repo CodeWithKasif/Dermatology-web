@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkinHealth - Your Guide to Healthy Skin</title>
+    <link rel="stylesheet" href="../css/globals.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/home.css">
+</head>
+<body class="min-h-screen bg-background text-foreground">
+    <div class="flex min-h-screen flex-col">
+        <header class="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+            <div class="container flex h-16 items-center justify-between">
+                <a href="index.html" class="flex items-center gap-2 font-semibold">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary">
+                        <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+                        <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+                        <path d="M4 22h16"></path>
+                        <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
+                        <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
+                        <path d="M9 5v8"></path>
+                        <path d="M15 5v8"></path>
+                        <path d="M9 13h6"></path>
+                    </svg>
+                    SkinHealth
+                </a>
+                <nav class="hidden md:flex items-center gap-6">
+                    <a href="skin-types.html" class="text-sm font-medium transition-colors hover:text-primary">Skin Types</a>
+                    <a href="conditions.html" class="text-sm font-medium transition-colors hover:text-primary">Conditions</a>
+                    <a href="treatments.html" class="text-sm font-medium transition-colors hover:text-primary">Treatments</a>
+                    <!-- <a href="diet.html" class="text-sm font-medium transition-colors hover:text-primary">Diet & Nutrition</a> -->
+                    <!-- <a href="skincare.html" class="text-sm font-medium transition-colors hover:text-primary">Skincare</a> -->
+                </nav>
+                <button class="md:hidden" id="mobile-menu-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="4" x2="20" y1="12" y2="12"></line>
+                        <line x1="4" x2="20" y1="6" y2="6"></line>
+                        <line x1="4" x2="20" y1="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+        </header>
+        
+        <div class="mobile-menu hidden" id="mobile-menu">
+            <div class="container py-4 flex flex-col gap-4">
+                <a href="skin-types.html" class="text-sm font-medium transition-colors hover:text-primary">Skin Types</a>
+                <a href="conditions.html" class="text-sm font-medium transition-colors hover:text-primary">Conditions</a>
+                <a href="treatments.html" class="text-sm font-medium transition-colors hover:text-primary">Treatments</a>
+                <a href="diet.html" class="text-sm font-medium transition-colors hover:text-primary">Diet & Nutrition</a>
+                <a href="skincare.html" class="text-sm font-medium transition-colors hover:text-primary">Skincare</a>
+            </div>
+        </div>
+        
+        <main class="flex-1">
+            <section class="w-full py-12 md:py-24 lg:py-32 bg-muted">
+                <div class="container px-4 md:px-6">
+                    <div class="flex flex-col items-center justify-center space-y-4 text-center">
+                        <div class="space-y-2">
+                            <h1 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Understand Your Skin Better</h1>
+                            <p class="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
+                                Explore the science of skin health with interactive visualizations and personalized recommendations.
+                            </p>
+                        </div>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="quiz.html" class="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring">
+                                Take Skin Assessment
+                            </a>
+                            <a href="skin-types.html" class="inline-flex h-10 items-center justify-center rounded-md border border-input bg-background px-8 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring">
+                                Learn More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="w-full py-12 md:py-24 lg:py-32">
+                <div class="container px-4 md:px-6">
+                    <div class="flex flex-col items-center justify-center space-y-4 text-center">
+                        <div class="space-y-2">
+                            <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl">Explore Skin Health Topics</h2>
+                            <p class="mx-auto max-w-[700px] text-muted-foreground">
+                                Discover comprehensive guides on various aspects of skin health and care.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="mx-auto grid max-w-5xl grid-cols-1 gap-6 py-12 md:grid-cols-3">
+                        <div class="flex flex-col items-center space-y-4 rounded-lg border p-6 shadow-sm">
+                            <div class="rounded-full bg-primary/10 p-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 text-primary">
+                                    <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold">Skin Types</h3>
+                            <p class="text-muted-foreground text-center">
+                                Understand your skin type and learn how to care for it properly.
+                            </p>
+                            <a href="skin-types.html" class="inline-flex h-9 items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1">
+                                Learn More
+                            </a>
+                        </div>
+                        <div class="flex flex-col items-center space-y-4 rounded-lg border p-6 shadow-sm">
+                            <div class="rounded-full bg-primary/10 p-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 text-primary">
+                                    <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold">Skin Conditions</h3>
+                            <p class="text-muted-foreground text-center">
+                                Explore common skin conditions, their causes, and treatments.
+                            </p>
+                            <a href="conditions.html" class="inline-flex h-9 items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1">
+                                Learn More
+                            </a>
+                        </div>
+                        <div class="flex flex-col items-center space-y-4 rounded-lg border p-6 shadow-sm">
+                            <div class="rounded-full bg-primary/10 p-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 text-primary">
+                                    <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold">Treatments</h3>
+                            <p class="text-muted-foreground text-center">
+                                Discover effective treatments for various skin concerns.
+                            </p>
+                            <a href="treatments.html" class="inline-flex h-9 items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1">
+                                Learn More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="w-full py-12 md:py-24 lg:py-32 bg-muted">
+                <div class="container px-4 md:px-6">
+                    <div class="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
+                        <div class="space-y-4">
+                            <div class="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground">
+                                Featured
+                            </div>
+                            <h2 class="text-3xl font-bold tracking-tighter md:text-4xl/tight">
+                                Interactive Skin Visualizations
+                            </h2>
+                            <p class="max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                                Explore the layers of your skin and understand how different factors affect its health with our interactive 3D models.
+                            </p>
+                            <div class="flex flex-col gap-2 min-[400px]:flex-row">
+                                <a href="skin-types.html" class="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring">
+                                    Explore Now
+                                </a>
+                            </div>
+                        </div>
+                        <div class="flex justify-center">
+                            <div class="relative h-[300px] w-full overflow-hidden rounded-xl">
+                                <img src="../images/skin-visualization.jpg" alt="Skin Visualization" class="object-cover w-full h-full" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="w-full py-12 md:py-24 lg:py-32">
+                <div class="container px-4 md:px-6">
+                    <div class="flex flex-col items-center justify-center space-y-4 text-center">
+                        <div class="space-y-2">
+                            <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl">Latest Articles</h2>
+                            <p class="mx-auto max-w-[700px] text-muted-foreground">
+                                Stay updated with the latest research and tips for maintaining healthy skin.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="mx-auto grid max-w-5xl grid-cols-1 gap-8 py-12 md:grid-cols-2 lg:grid-cols-3">
+                        <div class="group relative overflow-hidden rounded-lg border shadow-sm">
+                            <div class="aspect-video overflow-hidden">
+                                <img src="../images/article-1.jpg" alt="The Science of Hydration" class="object-cover w-full h-full transition-all group-hover:scale-105" />
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold">The Science of Hydration</h3>
+                                <p class="mt-2 text-muted-foreground">
+                                    How water intake affects your skin's appearance and health.
+                                </p>
+                                <a href="#" class="mt-4 inline-flex items-center text-sm font-medium text-primary">
+                                    Read More
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1 h-4 w-4">
+                                        <path d="M5 12h14"></path>
+                                        <path d="m12 5 7 7-7 7"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="group relative overflow-hidden rounded-lg border shadow-sm">
+                            <div class="aspect-video overflow-hidden">
+                                <img src="../images/article-2.jpg" alt="Understanding SPF" class="object-cover w-full h-full transition-all group-hover:scale-105" />
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold">Understanding SPF</h3>
+                                <p class="mt-2 text-muted-foreground">
+                                    What the numbers mean and how to choose the right sunscreen.
+                                </p>
+                                <a href="#" class="mt-4 inline-flex items-center text-sm font-medium text-primary">
+                                    Read More
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1 h-4 w-4">
+                                        <path d="M5 12h14"></path>
+                                        <path d="m12 5 7 7-7 7"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="group relative overflow-hidden rounded-lg border shadow-sm">
+                            <div class="aspect-video overflow-hidden">
+                                <img src="../images/article-3.jpg" alt="Skincare Ingredients to Avoid" class="object-cover w-full h-full transition-all group-hover:scale-105" />
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold">Skincare Ingredients to Avoid</h3>
+                                <p class="mt-2 text-muted-foreground">
+                                    Common ingredients that may be harmful to your skin.
+                                </p>
+                                <a href="#" class="mt-4 inline-flex items-center text-sm font-medium text-primary">
+                                    Read More
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1 h-4 w-4">
+                                        <path d="M5 12h14"></path>
+                                        <path d="m12 5 7 7-7 7"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="w-full py-12 md:py-24 lg:py-32 bg-muted">
+                <div class="container px-4 md:px-6">
+                    <div class="flex flex-col items-center justify-center space-y-4 text-center">
+                        <div class="space-y-2">
+                            <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl">Get Personalized Recommendations</h2>
+                            <p class="mx-auto max-w-[700px] text-muted-foreground">
+                                Take our interactive quiz to receive tailored skincare advice based on your skin type and concerns.
+                            </p>
+                        </div>
+                        <a href="quiz.html" class="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring">
+                            Take the Quiz
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="w-full border-t py-6 md:py-0">
+            <div class="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row">
+                <p class="text-center text-sm leading-loose text-muted-foreground md:text-left">
+                    © 2025 SkinHealth. All rights reserved.
+                </p>
+                <div class="flex gap-4">
+                    <a href="#" class="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
+                        About
+                    </a>
+                    <a href="#" class="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
+                        Contact
+                    </a>
+                    <a href="#" class="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
+                        Privacy
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

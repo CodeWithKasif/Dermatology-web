@@ -82,6 +82,8 @@ class CartAPI {
       `).join('');
   
       document.getElementById('cartTotal').textContent = this.calculateTotal().toFixed(2);
+
+      
     }
   
     setupEventListeners() {
@@ -97,6 +99,10 @@ class CartAPI {
           };
           this.addItem(item);
         }
+      });
+      document.querySelector('.checkout-btn')?.addEventListener('click', () => {
+        this.toggleCart();
+        window.location.href = '/frontend/chckout.html';
       });
     }
   

@@ -1,0 +1,33 @@
+<!-- order-success.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Success</title>
+    <style>
+        .success-container {
+            text-align: center;
+            padding: 50px;
+            max-width: 800px;
+            margin: 100px auto;
+        }
+        .checkmark {
+            font-size: 100px;
+            color: #008080;
+        }
+    </style>
+</head>
+<body>
+    <div class="success-container">
+        <div class="checkmark">✓</div>
+        <h1>Order Placed Successfully!</h1>
+        <p>Your order ID: <span id="orderId"></span></p>
+        <p>We've sent a confirmation email to your address.</p>
+    </div>
+
+    <script>
+        // Get order ID from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        document.getElementById('orderId').textContent = urlParams.get('id');
+    </script>
+</body>
+</html>
