@@ -100,7 +100,7 @@
 .badge {
     display: inline-block;
     background: #bfdbfe;
-    color: #2563eb;
+    color: teal;
     padding: 8px 16px;
     border-radius: 20px;
     font-size: 14px;
@@ -110,7 +110,7 @@
 h1 {
     font-size: 70px;
     font-weight: bold;
-    color: #1e3a8a;
+    color: teal;
     margin-top: 46px;
 }
 
@@ -137,7 +137,7 @@ p {
 }
 
 .primary {
-    background: #2563eb;
+    background: teal;
     color: white;
 }
 
@@ -163,8 +163,18 @@ p {
     padding: 50px 20px;
     position: relative;
     top: 80px;
-    background-color: aliceblue;
+    background: linear-gradient(
+        135deg,
+        rgba(0, 128, 128, 0.9),  /* Teal color */
+        rgba(0, 128, 128, 0.6),  /* Slightly lighter teal */
+        rgba(35, 218, 209, 0.8)  /* Medium aquamarine */
+    );
+    padding: 80px 40px;
+    margin: 50px 0;
+    border-radius: 20px;
 }
+
+
 
 .services-section h2 {
     font-size: 2rem;

@@ -536,22 +536,8 @@
         </ul>
     </nav>
 
-     <!-- Cart Sidebar -->
-<div class="cart-sidebar" id="cartSidebar">
-    <div class="cart-header">
-      <h2>Your Cart</h2>
-      <button class="close-btn" onclick="cartAPI.toggleCart()">×</button>
-    </div>
-    <div id="cartItems"></div>
-    <div class="cart-total">
-      <p>Total: $<span id="cartTotal">0.00</span></p>
-      <button class="checkout-btn">Place Order</button>
-    </div>
-  </div>
-  
-  <!-- Overlay -->
-  <div class="overlay" id="overlay" onclick="cartAPI.toggleCart()"></div>
-     <!-- slider -->
+    
+
      <section>
         <div class="slider-container">
             <div class="slider">
@@ -604,6 +590,23 @@
             </div>
         </div>
     </section>
+
+     <!-- Cart Sidebar -->
+     <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2>Your Cart</h2>
+            <button class="close-btn" onclick="cartAPI.toggleCart()">×</button>
+        </div>
+        <div id="cartItems"></div>
+        <div class="cart-total">
+            <p>Total: $<span id="cartTotal">0.00</span></p>
+            <button class="checkout-btn">Place Order</button>
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay" onclick="cartAPI.toggleCart()"></div>
+
     
     <section class="shop">
          <div class="head" id="head">
@@ -738,14 +741,14 @@
         //creating div
         
         const products = [
-    { id: 1, name: "Gentle Facial Cleanser", price: 28.00, img: "/frontend/img/products/cleanser1.jpeg" },
-    { id: 2, name: "Sunscreen", price: 32.00, img: "/frontend/img/products/sunscreen1.webp" },
-    { id: 3, name: "Hydrating Moisturizer", price: 35.00, img: "/frontend/img/products/moisturizer.webp" },
-    { id: 4, name: "Vitamin C Serum", price: 40.00, img: "/frontend/img/products/serum.jpg" },
-    { id: 5, name: "Exfoliating Scrub", price: 25.00, img: "/frontend/img/products/scrub.webp" },
-    { id: 6, name: "Anti-Aging Night Cream", price: 45.00, img: "/frontend/img/products/eyecream.webp" },
-    { id: 7, name: "Soothing Toner", price: 22.00, img: "/frontend/img/products/toner.webp" },
-    { id: 8, name: "Toner", price: 30.00, img: "/frontend/img/products/toner.webp" }
+    { id: 1, name: "Gentle Facial Cleanser", price: 280.00, img: "/frontend/img/products/cleanser1.jpeg" },
+    { id: 2, name: "Sunscreen", price: 320.00, img: "/frontend/img/products/sunscreen1.webp" },
+    { id: 3, name: "Hydrating Moisturizer", price: 350.00, img: "/frontend/img/products/moisturizer.webp" },
+    { id: 4, name: "Vitamin C Serum", price: 240.00, img: "/frontend/img/products/serum.jpg" },
+    { id: 5, name: "Exfoliating Scrub", price: 225.00, img: "/frontend/img/products/scrub.webp" },
+    { id: 6, name: "Anti-Aging Night Cream", price: 145.00, img: "/frontend/img/products/eyecream.webp" },
+    { id: 7, name: "Soothing Toner", price: 222.00, img: "/frontend/img/products/toner.webp" },
+    { id: 8, name: "Toner", price: 130.00, img: "/frontend/img/products/toner.webp" }
 ];
         const container = document.getElementById("product-container");
 
@@ -763,7 +766,7 @@
             <h3>${product.name}</h3>
             <p>Deeply cleanses without drying</p>
             <div class="card-footer">
-                <span class="price">$${product.price.toFixed(2)}</span>
+                <span class="price">Rs${product.price.toFixed(2)}</span>
                 <button class="button add-to-cart">Add to Cart</button>
             </div>
         </div>
@@ -785,5 +788,5 @@ function cleans(){
     window.location.href="/frontend/cart/cleanser.html"
 }
 </script>
-<script src="/frontend/js/cart.js"></script>
+<script src="./js/cart.js"></script>
 </html>

@@ -12,7 +12,7 @@
             align-items: center;
             min-height: 100vh;
             width: 50vw;
-            background: lightcyan;
+            background: rgb(255, 255, 255);
             border-radius: 50%;
             margin: 0;
             font-family: Arial, sans-serif;
@@ -93,6 +93,48 @@
             from { transform: rotate(0deg); }
             to { transform: rotate(-360deg); }
         }
+
+        .factors-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 50px 0;
+    }
+
+    .animated-text {
+        flex: 1;
+        padding-right: 50px;
+        animation: slideIn 1.5s ease-out;
+        transform: translateX(20px);
+    }
+
+    .animated-text h2 {
+        font-size: 2.5rem;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateX(300px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(20px);
+        }
+    }
+
+    /* Modify container styles */
+    .container {
+        width: 50%;
+        height: 500px;
+        position: relative;
+        min-height: auto;
+        background: transparent;
+        border-radius: 0;
+        margin-right: 80px;
+    }
     </style>
 </head>
 <body>
@@ -101,11 +143,11 @@
         <ul class="nav-links">
             <li><a href="#">Home</a></li>
             <li><a href="#">Healthcare</a></li>
-            <li><a href="#">Store</a></li>
-            <li><a href="ai.html">Virtual Consultation</a></li>
+            <li><a href="cart.html">Store</a></li>
+            <!-- <li><a href="">Virtual Consultation</a></li> -->
         </ul>
         <div class="cart-login">
-            <button class="cart">Cart</button>
+            <!-- <button class="cart"></button> -->
             <button class="logout" onclick="logout()">Logout</button>
         </div>
     </nav>
@@ -149,15 +191,24 @@
             <button class="feature-btn">Chat Now</button>
         </div>
     </section>
-    <!-- animation -->
-    <div class="container">
-      <div class="circle-container">
-          <!-- Factors will be added here -->
+
+    <section class="factors-section">
+      <div class="animated-text">
+          <h2>Factors Affecting<br>Your Skin Health</h2>
+          <p>Discover how various elements influence your skin's condition and appearance</p>
       </div>
-      <div class="central-circle">
-          <div class="central-text">Hover on factors<br>to see details</div>
+      
+      <div class="container">
+          <div class="circle-container">
+              <!-- Existing circle elements remain here -->
+          </div>
+          <div class="central-circle">
+              <div class="central-text">Hover on factors<br>to see details</div>
+          </div>
       </div>
-  </div>
+  </section>
+
+    
     <!-- foot -->
     
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -265,12 +316,12 @@
     </script>
     <script>
         const factors = [
-            { name: 'ENVIRONMENT', image: '/frontend/img/enviorment.png' },
-            { name: 'DIET', image: '' },
-            { name: 'AGING', image: '' },
-            { name: 'MENSTRUAL CYCLE', image: '/frontend/img/menses.webp' },
-            { name: 'LIFESTYLE', image: '' },
-            { name: 'SKINCARE', image: '' }
+            { name: 'ENVIRONMENT', image: '/evs.webp' },
+            { name: 'DIET', image: '/diet.avif' },
+            { name: 'AGING', image: '/age.webp' },
+            { name: 'MENSTRUAL CYCLE', image: '/menses1.jpg' },
+            { name: 'LIFESTYLE', image: '/route.avif' },
+            { name: 'SKINCARE', image: '/skin.jpg' }
         ];
 
         const container = document.querySelector('.circle-container');
@@ -318,6 +369,7 @@
     t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
     document.head.appendChild(t);
   });
+  
 </script>
 </body>
 </html>
