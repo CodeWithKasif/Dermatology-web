@@ -82,7 +82,7 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 80px;
-    background: linear-gradient(135deg, #f0f8ff, #000000);
+    background: linear-gradient(135deg, #c7e4e6, teal);
     font-family: 'Poppins', sans-serif;
 }
 

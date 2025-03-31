@@ -28,6 +28,8 @@ async function initializeDatabase() {
 
   await connection.query(`CREATE DATABASE IF NOT EXISTS ${dbConfig.database};`);
   await connection.query(`USE ${dbConfig.database};`);
+  
+  // Updated table creation query
   await connection.query(`
     CREATE TABLE IF NOT EXISTS appointments (
       id INT AUTO_INCREMENT PRIMARY KEY,
@@ -36,31 +38,63 @@ async function initializeDatabase() {
       email VARCHAR(255) NOT NULL,
       phone VARCHAR(20) NOT NULL,
       treatment_type VARCHAR(255) NOT NULL,
+      appointment_datetime DATETIME NOT NULL,  // Added column
       notes TEXT,
       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )
   `);
+  
   await connection.end();
 }
 
 // API endpoint for booking appointments
 app.post('/api/appointments', async (req, res) => {
+  const {
+      firstName,
+      lastName,
+      email,
+      phone,
+      appointmentDate,
+      appointmentTime,
+      treatmentType,
+      notes
+  } = req.body;
+
   try {
-    const { firstName, lastName, email, phone, treatmentType, notes } = req.body;
-    
-    const connection = await pool.getConnection();
-    const [result] = await connection.query(
-      'INSERT INTO appointments (first_name, last_name, email, phone, treatment_type, notes) VALUES (?, ?, ?, ?, ?, ?)',
-      [firstName, lastName, email, phone, treatmentType, notes]
-    );
-    
-    connection.release();
-    res.status(201).json({ message: 'Appointment booked successfully!', id: result.insertId });
+      // Combine date and time for MySQL DATETIME format
+      const appointmentDateTime = `${appointmentDate} ${appointmentTime}:00`;
+      
+      // Validate datetime
+      const appointmentDateObj = new Date(appointmentDateTime);
+      if (appointmentDateObj < new Date()) {
+          return res.status(400).json({ error: 'Appointment date cannot be in the past' });
+      }
+
+      // Check time boundaries
+      const hours = appointmentDateObj.getHours();
+      if (hours < 9 || hours >= 18) {
+          return res.status(400).json({ error: 'Appointments available between 9 AM to 6 PM' });
+      }
+
+      // Insert into MySQL
+      const [result] = await pool.execute(
+          `INSERT INTO appointments 
+          (first_name, last_name, email, phone, treatment_type, appointment_datetime, notes)
+          VALUES (?, ?, ?, ?, ?, ?, ?)`,
+          [firstName, lastName, email, phone, treatmentType, appointmentDateTime, notes]
+      );
+
+      res.status(201).json({
+          message: 'Appointment booked successfully',
+          appointmentId: result.insertId
+      });
+
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Failed to book appointment' });
+      console.error('Database error:', error);
+      res.status(500).json({ error: 'Failed to book appointment' });
   }
 });
+
 
 // Initialize database and start server
 initializeDatabase().then(() => {

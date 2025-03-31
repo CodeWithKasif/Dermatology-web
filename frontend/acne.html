@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #f8fbff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #12233d;
+        }
+        .nav-links {
+            display: flex;
+            gap: 60px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #12233d;
+            font-size: 16px;
+        }
+        .nav-links a:hover {
+            color: #3b82f6;
+        }
+        .book-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .book-section a {
+            text-decoration: none;
+            color: #3b82f6;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .book-btn {
+            background-color: teal;
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+        .book-btn:hover {
+            background-color: teal;
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: #f8fbff;
+                padding: 10px 0;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            }
+            .nav-links.show {
+                display: flex;
+            }
+            .menu-toggle {
+                display: block;
+            }
+        }
+
+        /*  */
+        .container {
+            position: relative;
+            width:100%;
+            height: 100vh;
+            background: url('/frontend/img/cart-hero.avif') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding-left: 100px;
+        }
+        .content {
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 400px;
+        }
+        .content h1 {
+            font-size: 50px;
+            margin: 0 0 10px;
+        }
+        .content p {
+            font-size: 16px;
+            line-height: 1.5;
+            margin: 0 0 20px;
+        }
+        .button {
+            background: #4A90E2;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .button:hover {
+            background: #357ABD;
+        }
+        .details {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        /* model  */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 400px;
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .modal-header h2 {
+            margin: 0;
+        }
+        .close {
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .form-group {
+            margin-bottom: 10px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: bold;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .submit-btn {
+            background: #12233d;
+            color: white;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        :root {
+            --primary-blue: #12233d;
+            --accent-teal: #2a7f7f;
+            --hover-blue: #357ABD;
+            --light-bg: #f8fbff;
+            --transition: all 0.3s ease;
+        }
+
+        /* Existing styles remain, replaced some values with CSS variables */
+        
+        /* Enhanced mobile menu */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: var(--light-bg);
+                padding: 15px 20px;
+                transform: translateY(-20px);
+                opacity: 0;
+                transition: var(--transition);
+            }
+            
+            .nav-links.show {
+                display: flex;
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            .nav-links a {
+                padding: 12px 0;
+                border-bottom: 1px solid rgba(18, 35, 61, 0.1);
+            }
+        }
+
+        /* Improved hero section */
+        .container {
+            position: relative;
+            height: 90vh;
+            min-height: 600px;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+                        url('/frontend/img/cart-hero.avif') no-repeat center center/cover;
+            padding: 0 5%;
+            justify-content: center;
+        }
+
+        .content {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(3px);
+            max-width: 600px;
+            margin: 0 20px;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Enhanced form styling */
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--accent-teal);
+            box-shadow: 0 0 0 3px rgba(42, 127, 127, 0.2);
+            outline: none;
+        }
+
+        .submit-btn {
+            transition: var(--transition);
+        }
+
+        .submit-btn:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+        }
+
+        /* Loading spinner */
+        .spinner {
+            animation: spin 1s linear infinite;
+            display: none;
+        }
+
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Error messages */
+        .error-message {
+            color: #dc3545;
+            font-size: 0.875rem;
+            margin-top: 4px;
+            display: none;
+        }
+
+        /* Responsive typography */
+        @media (max-width: 480px) {
+            .content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .content p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">DermaTouch</div>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="#">Treatments</a>
+            <a href="#">About</a>
+            <a href="#">Testimonials</a>
+            <a href=".contactinfo">Contact</a>
+        </div>
+        <div class="book-section">
+            <a href="#">📞 Book Consultation</a>
+            <button class="book-btn">Book Now</button>
+        </div>
+    </nav>
+
+    <section>
+
+    <div class="container">
+        <div class="content">
+            <a href="#" style="color: white; text-decoration: none; font-size: 14px;">&larr; Back to all treatments</a>
+            <h1>Acne Treatment</h1>
+            <p>Our comprehensive acne treatment program is designed to clear existing breakouts, prevent new ones, and reduce scarring for all skin types and acne severities.</p>
+            <button class="button" onclick="openModal()">Book This Treatment</button>
+            <div class="details">
+                <span>&#128339; 45-60 minutes per session</span>
+            </div>
+            <p><strong>Starting from $150 per session</strong></p>
+        </div>
+    </div>
+
+    </section>
+    
+    <!-- appoitment model -->
+    <section>
+        <div class="modal" id="appointmentModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Personal Information</h2>
+                    <span class="close" onclick="closeModal()">&times;</span>
+                </div>
+                <form id="bookingForm">
+                    <!-- Added IDs to all form elements -->
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" required>
+                        <div class="error-message" id="firstNameError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" required>
+                        <div class="error-message" id="lastNameError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                        <div class="error-message" id="emailError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" required>
+                        <div class="error-message" id="phoneError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="treatmentType">Treatment Type</label>
+                        <select id="treatmentType" required>
+                            <option value="">Select a treatment type</option>
+                            <option>Laser therapy</option>
+                            <option>Skin Rejuvenation</option>
+                        </select>
+                        <div class="error-message" id="treatmentTypeError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="appointmentDate">Appointment Date *</label>
+                        <input type="date" id="appointmentDate" required>
+                        <div class="error-message" id="dateError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="appointmentTime">Preferred Time *</label>
+                        <input type="time" id="appointmentTime" required>
+                        <div class="error-message" id="timeError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="notes">Additional Notes</label>
+                        <textarea id="notes" placeholder="Any specific concerns..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        <span class="spinner">⏳</span>
+                        <span class="btn-text">Book Appointment</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Initialize date picker
+        document.addEventListener('DOMContentLoaded', () => {
+            const dateInput = document.getElementById('appointmentDate');
+            dateInput.min = new Date().toISOString().split('T')[0];
+        });
+
+        function openModal() {
+            document.getElementById("appointmentModal").style.display = "flex";
+        }
+
+        function closeModal() {
+            document.getElementById("appointmentModal").style.display = "none";
+        }
+
+        // Validation functions
+        function showError(input, message) {
+            const errorElement = input.nextElementSibling;
+            errorElement.textContent = message;
+            errorElement.style.display = 'block';
+            input.classList.add('error');
+        }
+
+        function clearError(input) {
+            const errorElement = input.nextElementSibling;
+            errorElement.textContent = '';
+            errorElement.style.display = 'none';
+            input.classList.remove('error');
+        }
+
+        // Form validation
+        function validateForm() {
+            let isValid = true;
+            const inputs = document.querySelectorAll('#bookingForm input, #bookingForm select');
+            
+            inputs.forEach(input => {
+                if (!input.checkValidity()) {
+                    isValid = false;
+                    showError(input, input.validationMessage);
+                } else {
+                    clearError(input);
+                }
+            });
+
+            // Custom time validation
+            const timeInput = document.getElementById('appointmentTime');
+            const hours = parseInt(timeInput.value.split(':')[0]);
+            if (hours < 9 || hours >= 18) {
+                isValid = false;
+                showError(timeInput, "We're open between 9:00 AM to 6:00 PM");
+            }
+
+            return isValid;
+        }
+
+        // Form submission
+        document.getElementById('bookingForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            if (!validateForm()) return;
+
+            const submitBtn = document.querySelector('.submit-btn');
+            submitBtn.disabled = true;
+            document.querySelector('.spinner').style.display = 'inline-block';
+            document.querySelector('.btn-text').textContent = 'Booking...';
+
+            try {
+                const formData = {
+                    firstName: document.getElementById('firstName').value.trim(),
+                    lastName: document.getElementById('lastName').value.trim(),
+                    email: document.getElementById('email').value.trim(),
+                    phone: document.getElementById('phone').value.trim(),
+                    appointmentDate: document.getElementById('appointmentDate').value,
+                    appointmentTime: document.getElementById('appointmentTime').value,
+                    treatmentType: document.getElementById('treatmentType').value,
+                    notes: document.getElementById('notes').value.trim()
+                };
+
+                const response = await fetch('http://localhost:3001/api/appointments', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+
+                if (response.ok) {
+                    alert('Appointment booked successfully!');
+                    closeModal();
+                    document.getElementById('bookingForm').reset();
+                } else {
+                    const error = await response.json();
+                    alert(`Error: ${error.message}`);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Failed to connect to the server');
+            } finally {
+                submitBtn.disabled = false;
+                document.querySelector('.spinner').style.display = 'none';
+                document.querySelector('.btn-text').textContent = 'Book Appointment';
+            }
+        });
+
+        // Mobile menu toggle
+        function toggleMenu() {
+            const menu = document.querySelector('.nav-links');
+            menu.classList.toggle('show');
+            document.body.style.overflow = menu.classList.contains('show') ? 'hidden' : '';
+        }
+    </script>
+</html>
